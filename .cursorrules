@@ -1,0 +1,98 @@
+# .cursorrule - Front-End Codebase Rules & Best Practices
+
+This file defines the strict rules, standards, and best practices for all code, documentation, and project tasks in this repository. It is designed for use by developers and AI agents (such as Cursor) to ensure all work is professional, modular, semantic, and maintainable.
+---
+## 1. General Principles
+- **TypeScript Only**: All code must be written in TypeScript.
+- **Strict Typing**: All types and interfaces must be defined in dedicated files (e.g., `types.ts`) within the relevant feature or in `src/types/`. Never inline types in components or services.
+- **No Hard-Coding**: Never hard-code strings, keys, or magic values. All such values must be defined in dedicated constants files (e.g., `constants.ts`) and imported where needed.
+- **Separation of Concerns**: Keep business logic, UI, API, and helpers/utilities in separate files/modules.
+- **Modularity**: Organize code by feature/domain. Use folders for complex features/components.
+- **Reusability**: Build small, composable, and reusable components and hooks.
+For detailed rules and best practices, see /.cursor/rules/@file-organization.mdc. You MUST read these as well.
+---
+## 2. API Integration
+- **API Services**: All API calls must be defined in `src/api/` using a shared Axios instance. Endpoints must be managed in `src/constants/endpoints.ts`.
+- **Error Handling**: Use standardized error handling utilities (e.g., `handleApiError`).
+- **React Query**: All data fetching and mutations must use TanStack React Query hooks (`useQuery`, `useMutation`).
+- **Hooks**: Create custom hooks for queries/mutations in `src/hooks/yourDomain/` and use them in components.
+- **No Inline API Logic**: Never call APIs directly in components; always use hooks.
+- **Types**: All request/response payloads must be typed.
+- **Extending APIs**: Add new endpoints and methods following the same structure and conventions.
+For detailed rules and best practices, see /.cursor/rules/@api-integration.mdc. You MUST read these as well.
+---
+## 3. Form Handling
+- **Formik & Yup**: Use Formik for form state and Yup for validation.
+- **Validation Schemas**: All schemas must be in separate files (e.g., `schema.ts`, `validation.ts`).
+- **Reusable Fields**: Use shared field components for consistency.
+- **No Inline Validation**: Never define validation logic inside components.
+- **Multi-Step Forms**: Use context or local state for step management; keep each step modular.
+For detailed rules and best practices, see /.cursor/rules/@form-handling.mdc. You MUST read these as well.
+---
+## 4. UI Components
+- **Component Location**: Place shared components in `src/components/common/`, feature-specific in their respective folders.
+- **Props & Types**: All props must be typed via interfaces in a separate file.
+- **Styling**: Use Tailwind CSS utility classes. For complex styles, use CSS modules or global styles.
+- **No Inline Handlers**: Place all handlers, helpers, and utilities in separate files.
+- **Custom Hooks**: Wrap related logic in custom hooks; do not define multiple related functions in the component body.
+- **Exporting**: Export components from an `index.ts` for easy imports.
+- **Testing**: Add unit tests where possible; otherwise, manually verify.
+For detailed rules and best practices, see /.cursor/rules/@ui-creation.mdc. You MUST read these as well.
+---
+## 5. Project Structure
+- **Feature-Based Organization**: Organize by domain/feature for scalability.
+- **Dedicated Folders**: Use folders for API, components, hooks, context, types, schemas, utils, and constants.
+- **Pages**: All routes/pages go in `src/pages/` (Next.js convention).
+- **Providers**: Use context/providers for global state.
+For detailed rules and best practices, see /.cursor/rules/@file-organization.mdc. You MUST read these as well.
+---
+## 6. Constants & Enums
+- **Centralized**: All constants, enums, and keys must be in dedicated files (e.g., `constants.ts`).
+- **No Duplicates**: Never duplicate constants; import from the source.
+For detailed rules and best practices, see /.cursor/rules/@constants-and-enums.mdc. You MUST read these as well.
+---
+## 7. Helpers & Utilities
+- **Location**: Place all helpers and utilities in `src/utils/` or feature-specific `utils/` folders.
+- **No Inline Logic**: Do not define non-trivial helpers in components or services.
+For detailed rules and best practices, see /.cursor/rules/@helpers-and-utilities.mdc. You MUST read these as well.
+---
+## 8. Third-Party Integrations
+- **Encapsulation**: Encapsulate all third-party logic in hooks, services, or context.
+- **API Keys**: Store all API keys and secrets in environment variables.
+- **Documentation**: Document setup and usage in `doc/third_party_integration.md`.
+---
+## 9. Documentation & Comments
+- **Doc Files**: Update or create doc files for all new modules, features, and patterns.
+- **JSDoc**: Use JSDoc comments for all exported functions, classes, and complex logic.
+- **README**: Add usage examples for complex components or modules.
+For detailed rules and best practices, see /.cursor/rules/@documentation-setup.mdc. You MUST read these as well.
+---
+## 10. Design Patterns & Professionalism
+- **Semantic Naming**: Use clear, descriptive, and semantic names for all files, variables, and functions.
+- **Professional Structure**: Follow best practices for modularity, separation of concerns, and maintainability.
+- **No Anti-Patterns**: Avoid code smells, anti-patterns, and shortcuts.
+- **Consistency**: Follow the established patterns and update docs if new patterns are introduced.
+For detailed rules and best practices, see /.cursor/rules/@security-and-professionalism.mdc. You MUST read these as well.
+---
+## 11. Task-Specific Rules
+- **Adding a Module**: Follow the steps in `doc/project_structure.md` and `doc/api_integration.md`.
+- **Creating a Form**: Follow `doc/form_handling.md`.
+- **Building a UI Component**: Follow `doc/ui_component_and_project_tasks.md`.
+- **Integrating Third-Party Services**: Follow `doc/third_party_integration.md`.
+- **Always**: Adhere to the strict rules above for all new and refactored code.
+---
+## 12. Enforcement
+- **Mandatory**: All rules in this file are mandatory for all contributors and agents.
+- **Review**: All code must be reviewed for compliance before merging or deployment.
+---
+## 13. Quick Reference
+- Types/interfaces: `types.ts`
+- Constants/enums: `constants.ts`
+- API: `src/api/`, `src/constants/endpoints.ts`
+- Forms: Formik + Yup, schemas in separate files
+- UI: Typed, modular, styled with Tailwind, no inline logic
+- Docs: Update relevant `doc/` files for all changes
+- Always use endpoint constants from src/constants/endpoints.ts in all API service functions. Never hard-code endpoint strings in service files.
+- [Cursor historical mistake] There was a case where the endpoint string was hard-coded in an API service instead of using the constant. This must not be repeated: always use the constant. 
+---
+This file must be referenced by any agent (human or AI) performing tasks in this codebase to ensure full compliance with Dealeriq's professional standards.
