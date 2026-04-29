@@ -17,7 +17,7 @@
     "formik": "^2.4.9",
     "framer-motion": "^11.18.2",
     "next": "16.2.1",
-"react": "19.2.4",
+    "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^4.0.0",
     "three": "^0.170.0",
@@ -32,6 +32,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
