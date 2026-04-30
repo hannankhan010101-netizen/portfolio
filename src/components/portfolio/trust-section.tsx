@@ -170,6 +170,7 @@ function ClientCard({
         <motion.a
           href="#contact"
           className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/25 bg-cyan-400/[0.08] px-4 py-2.5 text-sm font-semibold text-cyan-300"
+          style={{ borderColor: "rgba(34,211,238,0.25)", backgroundColor: "rgba(34,211,238,0.08)" }}
           whileHover={{ backgroundColor: "rgba(34,211,238,0.12)", borderColor: "rgba(34,211,238,0.35)" }}
           transition={{ duration: 0.2 }}
         >
@@ -245,6 +246,7 @@ export function TrustSection() {
                 <motion.span
                   key={v}
                   className="rounded-full border border-white/[0.08] bg-zinc-950/60 px-3.5 py-1.5 text-xs font-semibold text-zinc-400"
+                  style={{ borderColor: "rgba(255,255,255,0.08)" }}
                   initial={{ opacity: 0, scale: 0.85 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}

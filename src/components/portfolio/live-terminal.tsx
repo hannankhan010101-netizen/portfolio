@@ -245,7 +245,7 @@ export function LiveTerminal() {
 
       {/* Main window */}
       <motion.div
-        className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-white/[0.09] backdrop-blur-md sm:h-[420px]"
+        className="terminal-window flex h-[340px] flex-col overflow-hidden rounded-2xl border border-white/[0.09] backdrop-blur-md sm:h-[420px]"
         style={{
           background: "rgba(10,10,18,0.94)",
           boxShadow: "0 0 0 1px rgba(167,139,250,0.12), 0 24px 64px -20px rgba(0,0,0,0.65), 0 0 48px -14px rgba(167,139,250,0.18)",
@@ -388,7 +388,7 @@ export function LiveTerminal() {
                   streaming ? "Generating…" :
                   "Ask about projects, skills, or share your idea…"
                 }
-                className="flex-1 bg-transparent text-sm text-zinc-100 placeholder:text-zinc-600 outline-none disabled:opacity-40"
+                className="flex-1 bg-white/[0.03] rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none border border-white/[0.05] transition-all focus:border-violet-400/30 focus:bg-white/[0.06] disabled:opacity-40"
                 autoComplete="off"
                 spellCheck={false}
               />

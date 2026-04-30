@@ -96,6 +96,7 @@ export function ExperienceSection() {
                   {/* Card */}
                   <motion.div
                     className="flex-1 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 shadow-lg shadow-black/20"
+                    style={{ borderColor: "rgba(255,255,255,0.1)" }}
                     whileHover={prefersReducedMotion ? undefined : { y: -3, borderColor: "rgba(34,211,238,0.15)" }}
                     transition={{ type: "spring", stiffness: 300, damping: 24 }}
                   >

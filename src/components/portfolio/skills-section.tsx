@@ -52,6 +52,7 @@ function ExpertiseCard({ title, description, index, icon }: { title: string; des
   return (
     <motion.article
       className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-zinc-950/70 p-5"
+      style={{ borderColor: "rgba(255,255,255,0.07)" }}
       initial={prefersReducedMotion ? false : { opacity: 0, x: fromLeft ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}

@@ -56,7 +56,7 @@ Write ONLY the message body (3–5 sentences). Strict rules:
       "Content-Type": "application/json" 
     },
     body: JSON.stringify({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages: [{ role: "user", content: prompt }],
       max_tokens: 250,
       temperature: 0.75,

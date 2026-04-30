@@ -223,12 +223,12 @@ html[data-theme="light"] canvas {
 /* Dark overlay divs — transparent so canvas shows through */
 html[data-theme="light"] .three-bg-overlay { opacity: 0 !important; }
 
-/* Hero: soft pastel gradient + show RL particles through it */
+/* Hero light mode: keep a professional light navy-white gradient */
 html[data-theme="light"] #hero {
-  background: linear-gradient(155deg, #f0f9ff 0%, #ffffff 42%, #faf5ff 100%) !important;
+  background: linear-gradient(155deg, #e0f2fe 0%, #f0f9ff 35%, #ffffff 65%, #f0f9ff 100%) !important;
 }
 html[data-theme="light"] #hero .three-bg-overlay {
-  background: linear-gradient(to bottom, rgba(240,249,255,0.28) 0%, rgba(255,255,255,0.08) 50%, rgba(250,245,255,0.38) 100%) !important;
+  background: linear-gradient(to bottom, rgba(224,242,254,0.45) 0%, rgba(255,255,255,0.12) 50%, rgba(240,249,255,0.35) 100%) !important;
   opacity: 1 !important;
 }
 
@@ -347,6 +347,52 @@ html[data-theme="light"] input::placeholder,
 html[data-theme="light"] textarea::placeholder {
   color: #a1a1aa !important;
 }
+
+/* ── Dark zones (terminals, code) stay dark in light mode ─────────── */
+html[data-theme="light"] .dark-zone,
+html[data-theme="light"] .ai-terminal-window,
+html[data-theme="light"] .terminal-window {
+  background-color: #0a0a12 !important;
+  color: #fafafa !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+html[data-theme="light"] .dark-zone input,
+html[data-theme="light"] .dark-zone textarea,
+html[data-theme="light"] .ai-terminal-window input,
+html[data-theme="light"] .ai-terminal-window textarea,
+html[data-theme="light"] .terminal-window input,
+html[data-theme="light"] .terminal-window textarea {
+  background-color: rgba(255,255,255,0.03) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+html[data-theme="light"] .dark-zone input::placeholder,
+html[data-theme="light"] .ai-terminal-window input::placeholder,
+html[data-theme="light"] .terminal-window input::placeholder {
+  color: rgba(255,255,255,0.3) !important;
+}
+
+/* Fix text colors inside dark zones */
+html[data-theme="light"] .dark-zone .text-zinc-400,
+html[data-theme="light"] .ai-terminal-window .text-zinc-400,
+html[data-theme="light"] .terminal-window .text-zinc-400 {
+  color: #a1a1aa !important;
+}
+
+html[data-theme="light"] .dark-zone .text-zinc-300,
+html[data-theme="light"] .ai-terminal-window .text-zinc-300,
+html[data-theme="light"] .terminal-window .text-zinc-300 {
+  color: #d4d4d8 !important;
+}
+
+html[data-theme="light"] .dark-zone .text-zinc-500,
+html[data-theme="light"] .ai-terminal-window .text-zinc-500,
+html[data-theme="light"] .terminal-window .text-zinc-500 {
+  color: #71717a !important;
+}
+
 html[data-theme="light"] select option {
   background-color: #ffffff !important;
   color: #18181b !important;
@@ -373,6 +419,53 @@ html[data-theme="light"] [class*="border-white\/\[0\.07\]"],
 html[data-theme="light"] [class*="border-white\/\[0\.08\]"],
 html[data-theme="light"] [class*="border-white\/\[0\.09\]"] {
   border-color: rgba(0,0,0,0.09) !important;
+}
+
+/* ── Divider lines on light ───────────────────────────────────────── */
+html[data-theme="light"] [class*="divide-white"] > * + * {
+  border-color: rgba(0,0,0,0.07) !important;
+}
+html[data-theme="light"] [class*="border-white\/\[0\.06\]"] {
+  border-color: rgba(0,0,0,0.07) !important;
+}
+html[data-theme="light"] [class*="border-white\/\[0\.12\]"] {
+  border-color: rgba(0,0,0,0.10) !important;
+}
+
+/* ── Experience section impact numbers on light ───────────────────── */
+html[data-theme="light"] .stat-gradient-text {
+  background: linear-gradient(135deg, #0891b2 0%, #059669 55%, #0891b2 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: gradient-pan 4s linear infinite !important;
+}
+
+/* ── Process section step cards on light ─────────────────────────── */
+html[data-theme="light"] #process {
+  background: linear-gradient(155deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%) !important;
+}
+
+/* ── AI features section terminal window stays dark in light mode ─── */
+html[data-theme="light"] .ai-terminal-window {
+  background-color: #07070f !important;
+  border-color: rgba(0,0,0,0.15) !important;
+}
+
+/* ── Gradient dashed borders ─────────────────────────────────────── */
+html[data-theme="light"] [class*="border-dashed"] {
+  border-color: rgba(0,0,0,0.12) !important;
+}
+
+/* ── Page root bg ─────────────────────────────────────────────────── */
+html[data-theme="light"] .min-h-full { background-color: #ffffff !important; }
+
+/* ── Backdrop blur elements on light ──────────────────────────────── */
+html[data-theme="light"] .backdrop-blur-sm,
+html[data-theme="light"] .backdrop-blur-xl,
+html[data-theme="light"] .backdrop-blur-md {
+  backdrop-filter: blur(12px) saturate(160%) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

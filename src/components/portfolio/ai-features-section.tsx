@@ -62,7 +62,7 @@ function TerminalCard() {
   return (
     <div className="flex flex-col gap-3">
       {/* Window */}
-      <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#07070f]">
+      <div className="dark-zone overflow-hidden rounded-xl border border-white/[0.07] bg-[#07070f]">
         {/* Title bar */}
         <div className="flex items-center gap-1.5 border-b border-white/[0.05] px-3 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-rose-500/70" />
@@ -129,7 +129,7 @@ function TerminalCard() {
             onKeyDown={e => e.key === "Enter" && send(input)}
             placeholder="ask anything..."
             disabled={busy}
-            className="flex-1 bg-transparent font-mono text-[11px] text-zinc-200 placeholder-zinc-700 outline-none disabled:opacity-50"
+            className="flex-1 bg-white/[0.03] rounded-md px-2 py-1 font-mono text-[11px] text-zinc-200 placeholder-zinc-700 outline-none border border-white/[0.05] focus:border-cyan-400/30 disabled:opacity-50"
           />
           <button
             onClick={() => send(input)}
@@ -268,7 +268,7 @@ function Eli5Card() {
       </div>
 
       {/* Input area */}
-      <div className="rounded-lg border border-white/[0.07] bg-zinc-950/60 p-3">
+      <div className="dark-zone rounded-lg border border-white/[0.07] bg-zinc-950/60 p-3">
         <p className="mb-1.5 text-[9px] font-bold uppercase tracking-wider text-zinc-600">Technical Stack</p>
         {useCustom ? (
           <textarea
@@ -431,7 +431,7 @@ function GhostwriterCard() {
             onChange={e => setName(e.target.value)}
             onKeyDown={e => e.key === "Enter" && generate()}
             placeholder="e.g. Alex"
-            className="w-full bg-transparent text-[11px] text-zinc-300 placeholder-zinc-700 outline-none"
+            className="w-full bg-white/[0.03] rounded px-1.5 py-1 text-[11px] text-zinc-300 placeholder-zinc-700 outline-none border border-white/[0.05] focus:border-cyan-400/30"
           />
         </div>
         <div className="rounded-lg border border-white/[0.07] bg-white/[0.02] px-2.5 py-2">
@@ -441,7 +441,7 @@ function GhostwriterCard() {
             onChange={e => setIntent(e.target.value)}
             onKeyDown={e => e.key === "Enter" && generate()}
             placeholder="e.g. API integration"
-            className="w-full bg-transparent text-[11px] text-zinc-300 placeholder-zinc-700 outline-none"
+            className="w-full bg-white/[0.03] rounded px-1.5 py-1 text-[11px] text-zinc-300 placeholder-zinc-700 outline-none border border-white/[0.05] focus:border-cyan-400/30"
           />
         </div>
       </div>

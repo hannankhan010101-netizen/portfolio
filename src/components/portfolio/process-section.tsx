@@ -254,6 +254,7 @@ export function ProcessSection() {
               <motion.a
                 href="#projects"
                 className="rounded-full border border-white/[0.1] px-6 py-2.5 text-sm font-semibold text-zinc-300"
+                style={{ borderColor: "rgba(255,255,255,0.1)" }}
                 whileHover={{ borderColor: "rgba(255,255,255,0.2)", color: "#f4f4f5" }}
                 transition={{ duration: 0.2 }}
               >

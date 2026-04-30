@@ -9,12 +9,15 @@ export function HeroSection() {
   return (
     <section
       id={SECTION_IDS.HERO}
-      className="relative min-h-[min(88vh,760px)] overflow-hidden border-b border-white/10 bg-zinc-950"
+      className="relative min-h-[min(88vh,760px)] overflow-hidden border-b border-white/[0.07] bg-[#020c1b]"
     >
       <HeroThreeBackground />
-      <div className="three-bg-overlay pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-zinc-950/55 via-zinc-950/20 to-zinc-900/70" />
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_60%_at_50%_-10%,rgba(34,211,238,0.14),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_85%_30%,rgba(52,211,153,0.06),transparent_45%)]" />
+      {/* Subtle dark vignette so particles read against the navy bg */}
+      <div className="three-bg-overlay pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#020c1b]/40 via-transparent to-[#020c1b]/60" />
+      {/* Top-centre cyan bloom — professional brand accent */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_70%_50%_at_50%_-5%,rgba(34,211,238,0.09),transparent_55%)]" />
+      {/* Subtle right-side depth */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_40%_60%_at_95%_50%,rgba(56,189,248,0.04),transparent_55%)]" />
       <HeroSectionInner />
     </section>
   );
