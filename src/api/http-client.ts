@@ -8,5 +8,6 @@ export const httpClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+
   timeout: 15_000,
 });
