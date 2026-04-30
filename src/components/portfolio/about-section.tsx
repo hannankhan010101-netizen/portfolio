@@ -6,7 +6,7 @@ import { ABOUT_SPECIALIZATIONS, EDUCATION } from "@/constants/personal";
 import { SectionEyebrow } from "@/components/portfolio/section-eyebrow";
 import { FadeIn } from "@/components/motion/fade-in";
 import { RevealItem } from "@/components/motion/reveal-item";
-import { motion, useReducedMotion, useInView } from "framer-motion";
+import { motion, useReducedMotion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { MOTION_DURATION, MOTION_EASE } from "@/constants/motion";
 import { useRef } from "react";
 
@@ -40,6 +40,103 @@ const TIMELINE = [
   { year: "Now", label: "Open to Opportunities", note: "Freelance · Full-time · Consulting", active: true },
 ] as const;
 
+/** 3D tilt card — tracks mouse within its bounds */
+function TiltCard({ children, className }: { children: React.ReactNode; className: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rotX = useSpring(useTransform(my, [-0.5, 0.5], [4, -4]), { stiffness: 280, damping: 28 });
+  const rotY = useSpring(useTransform(mx, [-0.5, 0.5], [-5, 5]), { stiffness: 280, damping: 28 });
+  const glowX = useTransform(mx, [-0.5, 0.5], [0, 100]);
+  const glowY = useTransform(my, [-0.5, 0.5], [0, 100]);
+
+  function onMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (prefersReducedMotion || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  }
+  function onLeave() { mx.set(0); my.set(0); }
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`${className} perspective-1000`}
+      style={{ rotateX: prefersReducedMotion ? 0 : rotX, rotateY: prefersReducedMotion ? 0 : rotY, transformStyle: "preserve-3d" }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {/* Dynamic inner highlight on tilt */}
+      {!prefersReducedMotion && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: useTransform(
+              [glowX, glowY] as const,
+              ([x, y]: number[]) =>
+                `radial-gradient(circle at ${x}% ${y}%, rgba(34,211,238,0.07), transparent 65%)`
+            ),
+          }}
+        />
+      )}
+      {children}
+    </motion.div>
+  );
+}
+
+/** Growing timeline with animated connector line */
+function AnimatedTimeline() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <div ref={ref} className="relative">
+      {/* Single line grows from top to bottom */}
+      <motion.div
+        className="absolute left-[13px] top-0 bottom-0 w-px origin-top bg-gradient-to-b from-cyan-400/40 via-white/[0.08] to-transparent"
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: inView ? 1 : 0 }}
+        transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+      />
+      <div className="space-y-0">
+        {TIMELINE.map((event, i) => (
+          <motion.div
+            key={event.year}
+            className="flex gap-4"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: 14 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 14 }}
+            transition={{ duration: 0.4, delay: i * 0.13 + 0.25, ease: MOTION_EASE }}
+          >
+            <div className="flex flex-col items-center">
+              <div className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full border ${event.active ? "border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_16px_-4px_rgba(34,211,238,0.6)]" : "border-white/[0.1] bg-zinc-900"}`}>
+                {event.active ? (
+                  <>
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+                    <span className="absolute inset-0 rounded-full border border-cyan-400/35 animate-ping" style={{ animationDuration: "2.8s" }} />
+                  </>
+                ) : (
+                  <span className="h-1.5 w-1.5 rounded-full bg-zinc-600" />
+                )}
+              </div>
+              {i < TIMELINE.length - 1 && (
+                <div className="my-1 w-px flex-1" style={{ minHeight: "1.5rem" }} />
+              )}
+            </div>
+            <div className="pb-5">
+              <span className={`text-[10px] font-bold uppercase tracking-wider ${event.active ? "text-cyan-400" : "text-zinc-500"}`}>{event.year}</span>
+              <p className={`text-sm font-semibold ${event.active ? "text-zinc-100" : "text-zinc-300"}`}>{event.label}</p>
+              <p className="text-xs text-zinc-500">{event.note}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function AnimatedBar({ label, value, index }: { label: string; value: number; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
@@ -68,7 +165,7 @@ export function AboutSection() {
   return (
     <section
       id={SECTION_IDS.ABOUT}
-      className="relative border-b border-white/10 bg-zinc-950 py-20 sm:py-24"
+      className="relative border-b border-white/10 bg-zinc-950 py-16 sm:py-20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_100%_0%,rgba(52,211,153,0.055),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_35%_at_0%_100%,rgba(34,211,238,0.04),transparent_55%)]" />
@@ -98,10 +195,14 @@ export function AboutSection() {
               className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-900/50 p-6"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-              <div className="flex items-center gap-5">
+              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
                 <div className="relative shrink-0">
-                  <div className="glow-pulse flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 to-emerald-500/10 text-xl font-bold text-cyan-300">
-                    HA
+                  <div className="glow-pulse relative h-16 w-16 overflow-hidden rounded-2xl border border-cyan-400/30 shadow-[0_0_20px_-6px_rgba(34,211,238,0.4)]">
+                    <img
+                      src="/images/profile.png"
+                      alt="Hannan Ahmed Khan"
+                      className="h-full w-full object-cover object-top"
+                    />
                   </div>
                   <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-zinc-950 bg-emerald-400">
                     <span className="h-2 w-2 rounded-full bg-zinc-950" />
@@ -136,37 +237,7 @@ export function AboutSection() {
               className="rounded-2xl border border-white/[0.08] bg-zinc-900/50 p-6"
             >
               <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600">Career Arc</p>
-              <div className="relative space-y-0">
-                {TIMELINE.map((event, i) => (
-                  <motion.div
-                    key={event.year}
-                    className="flex gap-4"
-                    initial={prefersReducedMotion ? false : { opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.1, ease: MOTION_EASE }}
-                  >
-                    {/* Timeline line + dot */}
-                    <div className="flex flex-col items-center">
-                      <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border ${event.active ? "border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_16px_-4px_rgba(34,211,238,0.6)]" : "border-white/[0.1] bg-zinc-900"}`}>
-                        {event.active
-                          ? <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
-                          : <span className="h-1.5 w-1.5 rounded-full bg-zinc-600" />
-                        }
-                      </div>
-                      {i < TIMELINE.length - 1 && (
-                        <div className="w-px flex-1 my-1 bg-gradient-to-b from-white/[0.08] to-transparent" style={{ minHeight: "1.5rem" }} />
-                      )}
-                    </div>
-                    {/* Content */}
-                    <div className="pb-5">
-                      <span className={`text-[10px] font-bold uppercase tracking-wider ${event.active ? "text-cyan-400" : "text-zinc-500"}`}>{event.year}</span>
-                      <p className={`text-sm font-semibold ${event.active ? "text-zinc-100" : "text-zinc-300"}`}>{event.label}</p>
-                      <p className="text-xs text-zinc-500">{event.note}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              <AnimatedTimeline />
             </RevealItem>
           </div>
 
@@ -180,26 +251,26 @@ export function AboutSection() {
               {ABOUT_SPECIALIZATIONS.map((item, index) => {
                 const color = SPEC_COLORS[index % SPEC_COLORS.length];
                 return (
-                  <motion.article
+                  <motion.div
                     key={item.id}
-                    className={`group relative overflow-hidden rounded-2xl border ${color.border} bg-zinc-900/40 p-5 transition-all duration-300 ${color.hover} hover:bg-zinc-900/70`}
                     initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: MOTION_DURATION.medium, ease: MOTION_EASE, delay: index * 0.07 }}
-                    whileHover={prefersReducedMotion ? undefined : { y: -3 }}
                   >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
-                    <div className="flex items-start gap-4">
-                      <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${color.border} ${color.bg} ${color.text}`}>
-                        {SPEC_ICONS[index]}
+                    <TiltCard className={`group relative overflow-hidden rounded-2xl border ${color.border} bg-zinc-900/40 p-5 transition-colors duration-300 ${color.hover} hover:bg-zinc-900/70`}>
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
+                      <div className="flex items-start gap-4">
+                        <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${color.border} ${color.bg} ${color.text}`}>
+                          {SPEC_ICONS[index]}
+                        </div>
+                        <div>
+                          <h4 className={`text-sm font-semibold ${color.text}`}>{item.title}</h4>
+                          <p className="mt-1.5 text-xs leading-relaxed text-zinc-500">{item.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className={`text-sm font-semibold ${color.text}`}>{item.title}</h4>
-                        <p className="mt-1.5 text-xs leading-relaxed text-zinc-500">{item.description}</p>
-                      </div>
-                    </div>
-                  </motion.article>
+                    </TiltCard>
+                  </motion.div>
                 );
               })}
             </div>

@@ -4,6 +4,7 @@
 export const SECTION_IDS = {
   HERO: "hero",
   ABOUT: "about",
+  PROCESS: "process",
   SKILLS: "skills",
   PROJECTS: "projects",
   EXPERIENCE: "experience",

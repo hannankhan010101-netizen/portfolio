@@ -91,14 +91,23 @@ export function ProjectsSection() {
             })}
           </div>
           <div className="grid gap-8 lg:grid-cols-2">
-            {visibleProjects.map((project, projectIndex) => (
-              <ProjectCard
-                key={project.id}
-                index={projectIndex}
-                project={project}
-                onOpenArchitecture={setArchitectureProject}
-              />
-            ))}
+            {visibleProjects.map((project, projectIndex) => {
+              const isLastOdd = visibleProjects.length % 2 !== 0 && projectIndex === visibleProjects.length - 1;
+              return (
+                <div 
+                  key={project.id} 
+                  className={isLastOdd ? "flex justify-center lg:col-span-2" : ""}
+                >
+                  <div className={isLastOdd ? "w-full lg:max-w-[calc(50%-1rem)]" : "w-full"}>
+                    <ProjectCard
+                      index={projectIndex}
+                      project={project}
+                      onOpenArchitecture={setArchitectureProject}
+                    />
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {SYSTEM_ARCHITECTURE_PILLARS.map((pillar, pillarIndex) => {

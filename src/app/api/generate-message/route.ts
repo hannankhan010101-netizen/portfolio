@@ -1,13 +1,6 @@
 import { NextResponse } from "next/server";
 import { generateContactMessage } from "@/utils/message-generator";
 
-interface GeminiResponse {
-  candidates?: Array<{
-    content?: { parts?: Array<{ text?: string }> };
-  }>;
-  error?: { message?: string };
-}
-
 interface GenerateContext {
   name: string;
   subject: string;
@@ -16,7 +9,7 @@ interface GenerateContext {
   brief?: string;
 }
 
-async function generateWithGemini(
+async function generateWithGroq(
   apiKey: string,
   ctx: GenerateContext,
 ): Promise<string> {
@@ -105,7 +98,7 @@ export async function POST(request: Request) {
 
   if (apiKey) {
     try {
-      const message = await generateWithGemini(apiKey, ctx);
+      const message = await generateWithGroq(apiKey, ctx);
       return NextResponse.json({ ok: true, message });
     } catch (err) {
       console.error("[generate-message] Groq error:", (err as Error).message);

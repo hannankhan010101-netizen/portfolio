@@ -79,7 +79,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
 ### Integrations
 - **Meta Graph API** for Instagram and Facebook messaging and comment management.`,
     githubUrl: GITHUB_PROFILE_URL,
-    liveDemoUrl: null,
+    liveDemoUrl: "https://socialguard.ai/login",
     liveDemoLabel: "Live Demo",
     filterKeys: [BACKEND, API],
   },
@@ -147,34 +147,40 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
   {
     id: "leadly-ai",
     name: "Leadly AI",
-    badgeLabel: "BACKEND",
+    badgeLabel: "AI AUTOMATION",
     videoUrl: "/videos/leadly-demo.mp4",
     summary:
-      "PropTech CRM platform featuring AI-driven sentiment analysis and automated property proposal generation. Custom API triggers for ManyChat and Calendly created a synchronized appointment engine for complex relational datasets — with multi-tenant RBAC, listing and deal tracking, and Redis-backed real-time notifications.",
-    techStack: ["Node.js", "Fastify", "MySQL", "Redis", "ManyChat", "Calendly"],
+      "End-to-end real estate lead automation platform built on Bubble.io and Supabase. Captures inbound leads from ManyChat/WhatsApp, runs OpenAI sentiment analysis to score intent and buying readiness, then autonomously schedules and executes AI-powered discovery calls via VAPI — all without human intervention. Hot leads receive a personalised AI-generated property proposal within minutes of first contact.",
+    techStack: ["Bubble.io", "Supabase", "ManyChat", "OpenAI", "VAPI", "Calendly"],
     keyFeatures: [
-      "AI-driven sentiment analysis and automated property proposal generation",
-      "Custom ManyChat and Calendly API triggers for synchronized appointment scheduling",
-      "Multi-tenant RBAC with territory rules, deal stage automation, and audit trails",
-      "Redis pub/sub and WebSockets for real-time notifications and presence",
-      "Background job queues for drip campaigns, SLA escalations, and reminders",
-      "Integrations: Stripe, Twilio, SendGrid, Meta APIs, OpenAI, calendar providers",
+      "ManyChat webhook ingestion — captures WhatsApp & Instagram leads in real time",
+      "OpenAI sentiment analysis — scores intent, urgency & buying readiness per message",
+      "Autonomous AI call scheduling — qualifies leads and books calls without human input",
+      "VAPI voice agent — conducts full AI discovery calls and logs structured outcomes",
+      "AI proposal generation — personalised property decks auto-sent post-call",
+      "End-to-end AI chatter — handles entire conversation from greeting to booked appointment",
     ],
-    architectureMarkdown: `## Leadly AI — system overview
+    architectureMarkdown: `## Leadly AI — Real Estate Automation Architecture
 
-### High level
-- **API layer**: Fastify services behind HTTPS — JWT access/refresh, idempotent webhooks.
-- **Tenancy**: Organization-scoped data with strict row-level scoping and audit logging.
-- **Realtime**: Redis pub/sub and WebSockets for inbox and notification fan-out.
-- **AI**: OpenAI for message drafting, sentiment analysis, and lead scoring with prompt logging.
+### Lead Ingestion
+- **ManyChat webhooks**: Captures WhatsApp/Instagram conversations and pushes structured lead data into Supabase via Bubble.io pipelines.
+- **Conversation parsing**: Extracts intent, budget range, location preferences, and contact details from raw chat history.
 
-### Data
-- **MySQL**: normalized CRM entities — contacts, listings, deals, and activities.
-- **Redis**: cache, rate limits, session hints, and job deduplication.
+### AI Intelligence Layer
+- **Sentiment analysis**: OpenAI classifies each inbound message for buying intent, urgency, and readiness score (hot / warm / cold).
+- **Lead scoring engine**: Score thresholds trigger different automation paths — hot leads go straight to AI calling, cold leads enter a nurture drip.
 
-### Async work
-- **Queues**: reminders, drip campaign sends, webhook retries, and workflow triggers.
-- **ManyChat + Calendly**: custom API triggers for synchronized appointment scheduling.`,
+### AI Calling & Scheduling
+- **VAPI voice agent**: Places autonomous AI discovery calls to qualified leads — conducts structured qualification, captures preferences, and logs call outcome back to Supabase.
+- **Calendly integration**: Automatically books human-agent follow-ups for leads that complete a successful AI call.
+
+### Proposal Engine
+- **AI proposal generation**: OpenAI builds a personalised property recommendation deck based on the lead's profile, budget, and area preferences.
+- **Auto-delivery**: Proposals dispatched via WhatsApp/email immediately after call completion — zero manual effort.
+
+### Platform
+- **Bubble.io**: Full agent dashboard UI and all integration workflow pipelines — no separate backend server required.
+- **Supabase (PostgreSQL)**: Persistent store for leads, conversation logs, call recordings, proposal history, and analytics.`,
     githubUrl: GITHUB_PROFILE_URL,
     liveDemoUrl: null,
     liveDemoLabel: "Live Demo",

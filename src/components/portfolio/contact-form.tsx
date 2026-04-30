@@ -41,7 +41,7 @@ async function fetchGeneratedMessage(
 }
 
 const inputClass =
-  "w-full rounded-lg border border-white/10 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none ring-cyan-500/40 transition-colors focus:border-cyan-500/40 focus:ring-2";
+  "w-full rounded-xl border border-white/[0.09] bg-zinc-950/80 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-200 focus:border-cyan-400/50 focus:bg-zinc-950 focus:shadow-[0_0_0_3px_rgba(34,211,238,0.08)] focus:ring-0";
 
 export function ContactForm() {
   const submission = useContactSubmission();
@@ -152,7 +152,7 @@ export function ContactForm() {
                   onChange={(e) =>
                     setAiContext((prev) => ({ ...prev, role: e.target.value }))
                   }
-                  className="w-full rounded-lg border border-white/[0.08] bg-zinc-950/80 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-600 outline-none ring-violet-500/30 transition-colors focus:border-violet-400/40 focus:ring-2"
+                  className="w-full rounded-xl border border-white/[0.09] bg-zinc-950/80 px-3 py-2.5 text-xs text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-200 focus:border-violet-400/40 focus:shadow-[0_0_0_3px_rgba(167,139,250,0.08)]"
                 />
               </div>
               <div>
@@ -168,7 +168,7 @@ export function ContactForm() {
                   onChange={(e) =>
                     setAiContext((prev) => ({ ...prev, intent: e.target.value }))
                   }
-                  className="w-full rounded-lg border border-white/[0.08] bg-zinc-950/80 px-3 py-2 text-xs text-zinc-100 outline-none ring-violet-500/30 transition-colors focus:border-violet-400/40 focus:ring-2"
+                  className="w-full rounded-xl border border-white/[0.09] bg-zinc-950/80 px-3 py-2.5 text-xs text-zinc-100 outline-none transition-all duration-200 focus:border-violet-400/40 focus:shadow-[0_0_0_3px_rgba(167,139,250,0.08)]"
                 >
                   {INTENT_OPTIONS.map((opt) => (
                     <option
@@ -201,7 +201,7 @@ export function ContactForm() {
                 onChange={(e) =>
                   setAiContext((prev) => ({ ...prev, brief: e.target.value }))
                 }
-                className="w-full rounded-lg border border-white/[0.08] bg-zinc-950/80 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-600 outline-none ring-violet-500/30 transition-colors focus:border-violet-400/40 focus:ring-2"
+                className="w-full rounded-xl border border-white/[0.09] bg-zinc-950/80 px-3 py-2.5 text-xs text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-200 focus:border-violet-400/40 focus:shadow-[0_0_0_3px_rgba(167,139,250,0.08)]"
               />
             </div>
           </div>

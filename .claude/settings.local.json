@@ -32,7 +32,14 @@
       "Bash(node_modules/.bin/tsc --version)",
       "Bash(node_modules/.bin/tsc --noEmit --traceResolution)",
       "Bash(rm \"/c/Users/HS TRADER/Desktop/Protfolio/MyPortfolio/portfolio/tsconfig.tsbuildinfo\")",
-      "Bash(rm \"/c/Users/HS TRADER/Desktop/Protfolio/MyPortfolio/portfolio/next-env.d - Copy.ts\")"
+      "Bash(rm \"/c/Users/HS TRADER/Desktop/Protfolio/MyPortfolio/portfolio/next-env.d - Copy.ts\")",
+      "WebFetch(domain:www.apple.com)",
+      "WebFetch(domain:www.mersi-architecture.com)",
+      "WebFetch(domain:antigravity.dev)",
+      "Bash(npx next *)",
+      "Bash(findstr \"LISTENING\")",
+      "Bash(findstr \":3000 \\\\|:8000 \\\\|:3001 \\\\|:4000 \")",
+      "Bash(grep -E \"\\\\.\\(tsx?|ts\\)$\")"
     ]
   }
 }

@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
 
-interface GeminiResponse {
-  candidates?: Array<{
-    content?: { parts?: Array<{ text?: string }> };
-  }>;
-  error?: { message?: string };
-}
-
 export async function POST(request: Request) {
   try {
     const { markdown, projectName } = (await request.json()) as { markdown: string; projectName: string };
