@@ -14,6 +14,8 @@ const MAX_SPEED    = 12.0;
 const DAMPING      = 0.940;
 const ORBIT_SPRING = 0.18;   // radial spring force toward orbital radius
 const ORBIT_TANG   = 1.2;    // tangential force (CCW orbital velocity)
+const REPULSION_DIST  = 42;
+const REPULSION_FORCE = 0.35;
 
 /* ── burst ───────────────────────────────────────────────────────── */
 const BURST_COOLDOWN = 90;   // frames (~1.5 s) — short so orbits resume fast
@@ -196,6 +198,22 @@ export function HeroThreeScene({ className }: HeroThreeSceneProps) {
       }
 
       /* ── physics ─────────────────────────────────────── */
+      /* inter-particle repulsion ("The Fight") */
+      for (let i = 0; i < ps.length; i++) {
+        for (let j = i + 1; j < ps.length; j++) {
+          const a = ps[i], b = ps[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < REPULSION_DIST * REPULSION_DIST && d2 > 0) {
+            const d     = Math.sqrt(d2);
+            const force = (REPULSION_DIST - d) * REPULSION_FORCE * 0.15;
+            const nx    = dx / d, ny = dy / d;
+            a.vx += nx * force; a.vy += ny * force;
+            b.vx -= nx * force; b.vy -= ny * force;
+          }
+        }
+      }
+
       for (const p of ps) {
         if (!isFinite(p.x) || !isFinite(p.y)) {
           p.x = Math.random() * W; p.y = Math.random() * Hc;
@@ -203,9 +221,9 @@ export function HeroThreeScene({ className }: HeroThreeSceneProps) {
           continue;
         }
 
-        /* noise drift */
+        /* noise drift - "Free Will" */
         p.na += p.ns;
-        const nf = p.isAnchor ? 0.022 : 0.055;
+        const nf = (p.isAnchor ? 0.08 : 0.16) * (pulling && mouse.current.active ? 0.2 : 1.0);
         p.vx  += Math.cos(p.na) * nf;
         p.vy  += Math.sin(p.na) * nf;
         p.vx  *= DAMPING;
