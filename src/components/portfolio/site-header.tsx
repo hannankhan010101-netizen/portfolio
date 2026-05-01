@@ -152,7 +152,7 @@ export function SiteHeader() {
 
             {/* Slide-down panel */}
             <motion.div
-              className="mobile-menu-overlay fixed inset-x-0 top-[57px] z-30 border-b border-white/10 bg-zinc-950/95 backdrop-blur-xl md:hidden"
+              className="mobile-menu-overlay fixed inset-x-0 top-[61px] z-30 max-h-[calc(100vh-61px)] overflow-y-auto border-b border-white/10 bg-zinc-950/95 backdrop-blur-xl md:hidden"
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}

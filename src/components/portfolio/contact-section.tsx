@@ -112,7 +112,7 @@ export function ContactSection() {
   const mailtoGeneral  = `mailto:${CONTACT_LINKS.email}?subject=${encodeURIComponent("Let's Work Together")}`;
 
   return (
-    <section id={SECTION_IDS.CONTACT} className="relative overflow-hidden bg-zinc-950 py-20 sm:py-28 lg:py-32">
+    <section id={SECTION_IDS.CONTACT} className="relative overflow-hidden bg-zinc-950 py-20 pb-32 sm:py-28 sm:pb-28 lg:py-32">
 
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0">
@@ -132,7 +132,7 @@ export function ContactSection() {
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <motion.h2
-                className="text-4xl font-extrabold tracking-tight text-zinc-50 sm:text-5xl"
+                className="text-3xl font-extrabold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl"
                 initial={prefersReduced ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -180,7 +180,7 @@ export function ContactSection() {
           </div>
 
           {/* ── Main grid ──────────────────────────────────────────── */}
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
 
             {/* ── Form card ──────────────────────────────────────── */}
             <motion.div

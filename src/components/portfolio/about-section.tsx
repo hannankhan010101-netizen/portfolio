@@ -165,13 +165,13 @@ export function AboutSection() {
   return (
     <section
       id={SECTION_IDS.ABOUT}
-      className="relative border-b border-white/10 bg-zinc-950 py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-14 sm:py-20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_100%_0%,rgba(52,211,153,0.055),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_35%_at_0%_100%,rgba(34,211,238,0.04),transparent_55%)]" />
 
       <FadeIn>
-        <div className="relative mx-auto max-w-6xl space-y-16 px-4 sm:px-6">
+        <div className="relative mx-auto max-w-6xl space-y-10 sm:space-y-16 px-4 sm:px-6">
 
           {/* Header */}
           <div className="space-y-3">
@@ -188,7 +188,7 @@ export function AboutSection() {
           </div>
 
           {/* Identity + Career Timeline — 2-column split */}
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
 
             {/* Left: Identity card */}
             <RevealItem as="div" hoverLift={false} delay={0.04}

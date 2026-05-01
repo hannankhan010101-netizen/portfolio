@@ -108,7 +108,7 @@ export function HeroSectionInner() {
 
   return (
     <motion.div
-      className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 px-4 py-14 sm:gap-8 sm:px-6 sm:py-16 lg:py-24"
+      className="relative z-10 mx-auto flex max-w-6xl flex-col gap-5 px-4 py-10 sm:gap-8 sm:px-6 sm:py-16 lg:py-24"
       variants={container}
       initial={prefersReducedMotion ? "show" : "hidden"}
       animate="show"
@@ -151,7 +151,7 @@ export function HeroSectionInner() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400 sm:text-sm">{HERO_GREETING}</p>
 
           {/* Name */}
-          <h1 className="hero-name-gradient bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl lg:text-7xl">
+          <h1 className="hero-name-gradient bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-[2rem] font-extrabold tracking-tight text-transparent xs:text-4xl sm:text-5xl lg:text-7xl">
             {PERSON_FULL_NAME}
           </h1>
 
@@ -174,16 +174,16 @@ export function HeroSectionInner() {
         </motion.div>
 
         {/* CTAs */}
-        <motion.div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" variants={item}>
+        <motion.div className="flex flex-col gap-3 xs:flex-row xs:flex-wrap xs:items-center" variants={item}>
           <MagneticButton
             href={`#${SECTION_IDS.PROJECTS}`}
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-zinc-950 shadow-[0_0_40px_-8px_rgba(34,211,238,0.6)] ring-1 ring-white/10 transition-shadow hover:shadow-[0_0_56px_-6px_rgba(34,211,238,0.75)] sm:px-8 sm:py-3.5"
+            className="flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-zinc-950 shadow-[0_0_40px_-8px_rgba(34,211,238,0.6)] ring-1 ring-white/10 transition-shadow hover:shadow-[0_0_56px_-6px_rgba(34,211,238,0.75)] xs:inline-flex xs:w-auto sm:px-8 sm:py-3.5"
           >
             {HERO_CTA_VIEW_PROJECTS}
           </MagneticButton>
           <MagneticButton
             href={`#${SECTION_IDS.CONTACT}`}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-zinc-100 backdrop-blur-sm transition-colors hover:border-white/25 hover:bg-white/[0.07] sm:px-8 sm:py-3.5"
+            className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-zinc-100 backdrop-blur-sm transition-colors hover:border-white/25 hover:bg-white/[0.07] xs:inline-flex xs:w-auto sm:px-8 sm:py-3.5"
           >
             {HERO_CTA_HIRE}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 opacity-70" aria-hidden>
@@ -192,7 +192,7 @@ export function HeroSectionInner() {
           </MagneticButton>
 
           {/* Social links */}
-          <div className="flex items-center gap-2 sm:ml-1">
+          <div className="flex items-center gap-2 xs:ml-1">
             <a
               href="https://github.com/hannankhan010101-netizen"
               target="_blank"
@@ -226,13 +226,13 @@ export function HeroSectionInner() {
 
       {/* Terminal + scroll hint */}
       <motion.div
-        className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+        className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
         variants={item}
       >
         <LiveTerminal />
         <motion.a
           href={`#${SECTION_IDS.ABOUT}`}
-          className="inline-flex items-center gap-2 text-sm text-zinc-400"
+          className="hidden items-center gap-2 text-sm text-zinc-400 lg:inline-flex"
           whileHover={{ color: "#22d3ee", x: 2 }}
           transition={{ type: "spring", stiffness: 380, damping: 26 }}
         >

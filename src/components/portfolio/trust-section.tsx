@@ -183,7 +183,7 @@ function ClientCard({
 
 export function TrustSection() {
   return (
-    <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-20 sm:py-24">
+    <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-14 sm:py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(34,211,238,0.04),transparent_60%)]" />
 
       <FadeIn>
@@ -216,7 +216,7 @@ export function TrustSection() {
               </h3>
               <span className="h-px flex-1 bg-gradient-to-r from-white/[0.07] to-transparent" />
             </div>
-            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
+            <div className="grid grid-cols-3 gap-2 xs:grid-cols-4 sm:grid-cols-4 md:grid-cols-6">
               {TECH_PARTNERS.map((tech, i) => (
                 <motion.div
                   key={tech.name}

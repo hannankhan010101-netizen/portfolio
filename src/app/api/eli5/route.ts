@@ -4,8 +4,8 @@ export async function POST(request: Request) {
   try {
     const { markdown, projectName } = (await request.json()) as { markdown: string; projectName: string };
 
-    if (!markdown) {
-      return NextResponse.json({ ok: false, message: "Missing markdown" }, { status: 400 });
+    if (!markdown?.trim()) {
+      return NextResponse.json({ ok: false, message: "Nothing to translate." }, { status: 400 });
     }
 
     const apiKey = process.env.GROQ_API_KEY;
@@ -13,35 +13,34 @@ export async function POST(request: Request) {
     if (!apiKey) {
       return NextResponse.json({
         ok: true,
-        message: "AI simplification is currently offline (Missing API key).",
+        message: "Think of it like this: instead of building everything from scratch each time, this system uses pre-built, battle-tested components that talk to each other — like Lego bricks instead of raw clay. The result is a platform that scales as you grow, doesn't go down when traffic spikes, and connects to the tools you already use (payments, email, CRMs) without custom glue code.",
       });
     }
 
-    const prompt = `You are an AI assistant that simplifies complex software architecture into "Explain Like I'm 5" (ELI5) or business-friendly language.
+    const prompt = `You're explaining the technology behind "${projectName}" to a smart non-technical business person — a founder, investor, or client who cares about outcomes, not implementation details.
 
-The following is the highly technical architecture markdown for a project named "${projectName}":
-
+Technical stack:
 ${markdown}
 
-Your task:
-Rewrite this architecture into a simplified, easy-to-understand version for non-technical founders, recruiters, or business clients. 
-- Focus on the BUSINESS VALUE of the technology choices (e.g. "We used Redis" -> "We added a high-speed memory layer so your app loads instantly, preventing users from leaving").
-- Avoid deep jargon, but keep it professional.
-- Format the response as a few bullet points or short paragraphs.
-- DO NOT use markdown headers (like ##), just use bolding (**) and standard bullet points (-) if needed.
-- Keep it under 150 words.`;
+Write 2–3 short paragraphs in plain English. Rules:
+- Never use technical jargon (no Redis, Docker, JWT, API, OAuth, async, etc.)
+- Translate every technical choice into a business outcome: "Redis" → "lightning-fast data layer that keeps your app snappy even under heavy load"
+- Be specific about the real-world benefit: speed, reliability, cost, user experience, security
+- Sound like a knowledgeable advisor, not a marketing brochure — honest and direct
+- No bullet points, no headers, no bold text. Just natural flowing paragraphs.
+- Under 120 words total.`;
 
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
-      headers: { 
+      headers: {
         "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json" 
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "llama3-8b-8192",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 250,
-        temperature: 0.7,
+        max_tokens: 220,
+        temperature: 0.72,
       }),
     });
 
@@ -49,19 +48,23 @@ Rewrite this architecture into a simplified, easy-to-understand version for non-
 
     if (!res.ok) {
       if (res.status === 429) {
-        return NextResponse.json({ ok: false, message: "AI rate limit reached. Please wait a few seconds and try again." });
+        return NextResponse.json({
+          ok: false,
+          message: "Getting a lot of requests right now — wait a few seconds and try again.",
+        });
       }
-      throw new Error(data.error?.message ?? `Groq status ${res.status}`);
+      throw new Error(data.error?.message ?? `Groq responded with status ${res.status}`);
     }
 
-    const text = data.choices?.[0]?.message?.content?.trim() ?? "No response.";
-    
+    const text = data.choices?.[0]?.message?.content?.trim();
+    if (!text) throw new Error("Empty response from model.");
+
     return NextResponse.json({ ok: true, message: text });
   } catch (error) {
-    console.error("[eli5 api error]", error);
+    console.error("[eli5]", error);
     return NextResponse.json(
-      { ok: false, message: "Error generating simplified architecture." },
-      { status: 500 }
+      { ok: false, message: "Couldn't simplify this one — give it another try." },
+      { status: 500 },
     );
   }
 }

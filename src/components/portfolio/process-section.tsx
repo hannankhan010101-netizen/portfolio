@@ -170,7 +170,7 @@ export function ProcessSection() {
   return (
     <section
       id={SECTION_IDS.PROCESS}
-      className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-14 sm:py-20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_100%_0%,rgba(34,211,238,0.05),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_100%,rgba(52,211,153,0.04),transparent_55%)]" />
@@ -241,10 +241,10 @@ export function ProcessSection() {
               <p className="text-base font-semibold text-zinc-100">Ready to start the discovery call?</p>
               <p className="mt-1 text-sm text-zinc-500">No commitment. Just a 15-minute conversation about what you&apos;re building.</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 xs:flex-row">
               <motion.a
                 href="#contact"
-                className="rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-6 py-2.5 text-sm font-bold text-zinc-950"
+                className="w-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-6 py-2.5 text-center text-sm font-bold text-zinc-950 xs:w-auto"
                 whileHover={{ scale: 1.04, boxShadow: "0 0 24px -4px rgba(34,211,238,0.6)" }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 420, damping: 22 }}
@@ -253,7 +253,7 @@ export function ProcessSection() {
               </motion.a>
               <motion.a
                 href="#projects"
-                className="rounded-full border border-white/[0.1] px-6 py-2.5 text-sm font-semibold text-zinc-300"
+                className="w-full rounded-full border border-white/[0.1] px-6 py-2.5 text-center text-sm font-semibold text-zinc-300 xs:w-auto"
                 style={{ borderColor: "rgba(255,255,255,0.1)" }}
                 whileHover={{ borderColor: "rgba(255,255,255,0.2)", color: "#f4f4f5" }}
                 transition={{ duration: 0.2 }}

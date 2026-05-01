@@ -208,7 +208,7 @@ export function ContactForm() {
 
           {/* Message + Generate button */}
           <div>
-            <div className="mb-1.5 flex items-center justify-between gap-3">
+            <div className="mb-1.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
               <label htmlFor="contact-message" className="text-sm font-medium text-zinc-300">
                 {CONTACT_SECTION.fieldMessageLabel}
               </label>

@@ -14,9 +14,9 @@
 }
 
 html[data-theme="light"] {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #09090b;
-  --bar-track: #e4e4e7;
+  --bar-track: #e2e8f0;
   color-scheme: light;
 }
 
@@ -27,10 +27,26 @@ html[data-theme="light"] {
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   transition: background-color 0.35s ease, color 0.35s ease;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* iOS momentum scroll on scroll containers */
+[data-scroll], .overflow-y-auto, .overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Clip horizontal overflow on body only — never on html (breaks vertical scroll) */
+body {
+  overflow-x: clip;
 }
 
 /* ─── Theme transition (non-layout only) ──────────────────────────────── */
@@ -70,23 +86,23 @@ video {
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Section / page backgrounds ─────────────────────────────────────── */
-html[data-theme="light"] body            { background-color: #ffffff !important; }
-html[data-theme="light"] .bg-zinc-950    { background-color: #ffffff !important; }
-html[data-theme="light"] .bg-zinc-900    { background-color: #f7f7f8 !important; }
+html[data-theme="light"] body            { background-color: #f8fafc !important; }
+html[data-theme="light"] .bg-zinc-950    { background-color: #f8fafc !important; }
+html[data-theme="light"] .bg-zinc-900    { background-color: #f1f5f9 !important; }
 html[data-theme="light"] .bg-zinc-800    { background-color: #e4e4e7 !important; }
 
 /* Opacity-modified section bg overrides */
-html[data-theme="light"] .bg-zinc-950\/90 { background-color: rgba(255,255,255,0.96) !important; }
-html[data-theme="light"] .bg-zinc-950\/80 { background-color: rgba(255,255,255,0.94) !important; }
-html[data-theme="light"] .bg-zinc-950\/70 { background-color: rgba(255,255,255,0.92) !important; }
-html[data-theme="light"] .bg-zinc-950\/60 { background-color: rgba(255,255,255,0.88) !important; }
-html[data-theme="light"] .bg-zinc-950\/40 { background-color: rgba(255,255,255,0.70) !important; }
-html[data-theme="light"] .bg-zinc-950\/30 { background-color: rgba(255,255,255,0.55) !important; }
-html[data-theme="light"] .bg-zinc-900\/80 { background-color: rgba(247,247,248,0.96) !important; }
-html[data-theme="light"] .bg-zinc-900\/60 { background-color: rgba(247,247,248,0.90) !important; }
-html[data-theme="light"] .bg-zinc-900\/50 { background-color: rgba(247,247,248,0.75) !important; }
-html[data-theme="light"] .bg-zinc-900\/40 { background-color: rgba(247,247,248,0.80) !important; }
-html[data-theme="light"] .bg-zinc-900\/30 { background-color: rgba(247,247,248,0.55) !important; }
+html[data-theme="light"] .bg-zinc-950\/90 { background-color: rgba(248,250,252,0.96) !important; }
+html[data-theme="light"] .bg-zinc-950\/80 { background-color: rgba(248,250,252,0.94) !important; }
+html[data-theme="light"] .bg-zinc-950\/70 { background-color: rgba(248,250,252,0.92) !important; }
+html[data-theme="light"] .bg-zinc-950\/60 { background-color: rgba(248,250,252,0.88) !important; }
+html[data-theme="light"] .bg-zinc-950\/40 { background-color: rgba(248,250,252,0.70) !important; }
+html[data-theme="light"] .bg-zinc-950\/30 { background-color: rgba(248,250,252,0.55) !important; }
+html[data-theme="light"] .bg-zinc-900\/80 { background-color: rgba(241,245,249,0.96) !important; }
+html[data-theme="light"] .bg-zinc-900\/60 { background-color: rgba(241,245,249,0.90) !important; }
+html[data-theme="light"] .bg-zinc-900\/50 { background-color: rgba(241,245,249,0.75) !important; }
+html[data-theme="light"] .bg-zinc-900\/40 { background-color: rgba(241,245,249,0.80) !important; }
+html[data-theme="light"] .bg-zinc-900\/30 { background-color: rgba(241,245,249,0.55) !important; }
 
 /* "Black" surface elements (terminal, video bg) */
 html[data-theme="light"] .bg-black       { background-color: #f0f0f2 !important; }
@@ -94,20 +110,24 @@ html[data-theme="light"] .bg-black\/45   { background-color: rgba(243,244,246,0.
 html[data-theme="light"] .bg-black\/50   { background-color: rgba(243,244,246,0.95) !important; }
 
 /* White-opacity tint elements */
-html[data-theme="light"] .bg-white\/\[0\.04\] { background-color: rgba(0,0,0,0.04) !important; }
+html[data-theme="light"] .bg-white\/\[0\.02\] { background-color: rgba(0,0,0,0.02) !important; }
 html[data-theme="light"] .bg-white\/\[0\.03\] { background-color: rgba(0,0,0,0.03) !important; }
+html[data-theme="light"] .bg-white\/\[0\.04\] { background-color: rgba(0,0,0,0.04) !important; }
+html[data-theme="light"] .bg-white\/\[0\.05\] { background-color: rgba(0,0,0,0.04) !important; }
 html[data-theme="light"] .bg-white\/\[0\.06\] { background-color: rgba(0,0,0,0.05) !important; }
+html[data-theme="light"] .bg-white\/\[0\.07\] { background-color: rgba(0,0,0,0.05) !important; }
+html[data-theme="light"] .bg-white\/\[0\.08\] { background-color: rgba(0,0,0,0.06) !important; }
 
 /* ── Gradient background hacks (from- / to- zinc-9xx) ──────────────── */
 /* In Tailwind v4 these CSS vars drive the gradient-image             */
 html[data-theme="light"] [class*="from-zinc-9"] {
-  --tw-gradient-from: #f4f4f5 !important;
+  --tw-gradient-from: #f1f5f9 !important;
 }
 html[data-theme="light"] [class*="to-zinc-9"] {
-  --tw-gradient-to: #fafafa !important;
+  --tw-gradient-to: #f8fafc !important;
 }
 html[data-theme="light"] [class*="via-zinc-9"] {
-  --tw-gradient-via: #f4f4f5 !important;
+  --tw-gradient-via: #f1f5f9 !important;
 }
 
 /* ── Gradient text fix ─────────────────────────────────────────────── */
@@ -134,21 +154,49 @@ html[data-theme="light"] .text-zinc-200 { color: #27272a !important; }
 html[data-theme="light"] .text-zinc-300 { color: #3f3f46 !important; }
 html[data-theme="light"] .text-zinc-400 { color: #52525b !important; }
 html[data-theme="light"] .text-zinc-500 { color: #71717a !important; }
-html[data-theme="light"] .text-zinc-600 { color: #a1a1aa !important; }
-html[data-theme="light"] .text-zinc-700 { color: #d4d4d8 !important; }
+html[data-theme="light"] .text-zinc-600 { color: #8c8c98 !important; }
+html[data-theme="light"] .text-zinc-700 { color: #6b7280 !important; }
 
 /* Accent text — darker shades for contrast on white */
 html[data-theme="light"] .text-cyan-400  { color: #0891b2 !important; }
 html[data-theme="light"] .text-cyan-300  { color: #0e7490 !important; }
+html[data-theme="light"] .text-cyan-500  { color: #06b6d4 !important; }
 html[data-theme="light"] .text-cyan-200\/95 { color: rgba(14,116,144,0.95) !important; }
 html[data-theme="light"] .text-emerald-400 { color: #059669 !important; }
 html[data-theme="light"] .text-emerald-300 { color: #047857 !important; }
+html[data-theme="light"] .text-emerald-500 { color: #10b981 !important; }
 html[data-theme="light"] .text-violet-400  { color: #7c3aed !important; }
 html[data-theme="light"] .text-violet-300  { color: #6d28d9 !important; }
+html[data-theme="light"] .text-violet-500  { color: #8b5cf6 !important; }
 html[data-theme="light"] .text-amber-400   { color: #d97706 !important; }
 html[data-theme="light"] .text-amber-300   { color: #b45309 !important; }
 html[data-theme="light"] .text-rose-400    { color: #e11d48 !important; }
 html[data-theme="light"] .text-rose-300    { color: #be123c !important; }
+html[data-theme="light"] .text-sky-400     { color: #0284c7 !important; }
+html[data-theme="light"] .text-sky-300     { color: #0369a1 !important; }
+
+/* Hover text states — must be visible on white background */
+html[data-theme="light"] .hover\:text-white:hover       { color: #09090b !important; }
+html[data-theme="light"] .hover\:text-zinc-100:hover    { color: #18181b !important; }
+html[data-theme="light"] .hover\:text-zinc-50:hover     { color: #09090b !important; }
+html[data-theme="light"] .hover\:text-zinc-300:hover    { color: #3f3f46 !important; }
+html[data-theme="light"] .hover\:text-zinc-200:hover    { color: #27272a !important; }
+html[data-theme="light"] .hover\:text-cyan-300:hover    { color: #0e7490 !important; }
+html[data-theme="light"] .group:hover .group-hover\:text-zinc-100 { color: #18181b !important; }
+html[data-theme="light"] .group:hover .group-hover\:text-white    { color: #09090b !important; }
+
+/* Hover border states */
+html[data-theme="light"] .hover\:border-white\/20:hover  { border-color: rgba(0,0,0,0.18) !important; }
+html[data-theme="light"] .hover\:border-white\/\[0\.2\]:hover { border-color: rgba(0,0,0,0.18) !important; }
+html[data-theme="light"] .hover\:border-white\/10:hover  { border-color: rgba(0,0,0,0.10) !important; }
+html[data-theme="light"] .hover\:border-white\/\[0\.14\]:hover { border-color: rgba(0,0,0,0.14) !important; }
+html[data-theme="light"] .hover\:border-white\/\[0\.1\]:hover  { border-color: rgba(0,0,0,0.10) !important; }
+html[data-theme="light"] .hover\:border-white\/25:hover  { border-color: rgba(0,0,0,0.22) !important; }
+html[data-theme="light"] .hover\:border-white\/\[0\.25\]:hover { border-color: rgba(0,0,0,0.22) !important; }
+
+/* Hover bg states */
+html[data-theme="light"] .hover\:bg-white\/\[0\.04\]:hover { background-color: rgba(0,0,0,0.04) !important; }
+html[data-theme="light"] .hover\:bg-white\/\[0\.07\]:hover { background-color: rgba(0,0,0,0.05) !important; }
 
 /* ── Borders ──────────────────────────────────────────────────────── */
 html[data-theme="light"] .border-white\/10       { border-color: rgba(0,0,0,0.08) !important; }
@@ -178,8 +226,10 @@ html[data-theme="light"] .bg-cyan-400\/\[0\.07\]    { background-color: rgba(8,1
 html[data-theme="light"] .bg-cyan-400\/\[0\.08\]    { background-color: rgba(8,145,178,0.09) !important; }
 html[data-theme="light"] .bg-cyan-400\/10            { background-color: rgba(8,145,178,0.10) !important; }
 html[data-theme="light"] .bg-cyan-400\/15            { background-color: rgba(8,145,178,0.14) !important; }
+html[data-theme="light"] .bg-emerald-400\/\[0\.05\]  { background-color: rgba(5,150,105,0.06) !important; }
 html[data-theme="light"] .bg-emerald-400\/\[0\.06\]  { background-color: rgba(5,150,105,0.07) !important; }
 html[data-theme="light"] .bg-emerald-400\/\[0\.07\]  { background-color: rgba(5,150,105,0.08) !important; }
+html[data-theme="light"] .bg-emerald-400\/\[0\.08\]  { background-color: rgba(5,150,105,0.09) !important; }
 html[data-theme="light"] .bg-emerald-400\/10         { background-color: rgba(5,150,105,0.10) !important; }
 html[data-theme="light"] .bg-violet-400\/\[0\.04\]   { background-color: rgba(109,40,217,0.05) !important; }
 html[data-theme="light"] .bg-violet-400\/\[0\.06\]   { background-color: rgba(109,40,217,0.06) !important; }
@@ -187,8 +237,7 @@ html[data-theme="light"] .bg-violet-400\/\[0\.07\]   { background-color: rgba(10
 html[data-theme="light"] .bg-violet-500\/20          { background-color: rgba(109,40,217,0.08) !important; }
 html[data-theme="light"] .bg-amber-400\/\[0\.06\]    { background-color: rgba(217,119,6,0.06) !important; }
 html[data-theme="light"] .bg-rose-400\/\[0\.06\]     { background-color: rgba(225,29,72,0.05) !important; }
-html[data-theme="light"] .bg-white\/\[0\.02\]        { background-color: rgba(0,0,0,0.02) !important; }
-html[data-theme="light"] .bg-white\/\[0\.05\]        { background-color: rgba(0,0,0,0.04) !important; }
+/* bg-white/[0.02] and bg-white/[0.05] defined earlier in white-opacity section above */
 
 /* ── Missing accent borders ───────────────────────────────────────── */
 html[data-theme="light"] .border-violet-400\/20     { border-color: rgba(109,40,217,0.25) !important; }
@@ -204,10 +253,19 @@ html[data-theme="light"] .ring-violet-400\/30       { --tw-ring-color: rgba(109,
 html[data-theme="light"] .ring-white\/10            { --tw-ring-color: rgba(0,0,0,0.08) !important; }
 
 /* ── Gradient line accents (top border lines on cards) ────────────── */
-html[data-theme="light"] .via-cyan-400\/50  { --tw-gradient-via: rgba(8,145,178,0.5) !important; }
-html[data-theme="light"] .via-cyan-400\/30  { --tw-gradient-via: rgba(8,145,178,0.3) !important; }
+html[data-theme="light"] .via-cyan-400\/50   { --tw-gradient-via: rgba(8,145,178,0.5) !important; }
+html[data-theme="light"] .via-cyan-400\/30   { --tw-gradient-via: rgba(8,145,178,0.3) !important; }
+html[data-theme="light"] .via-cyan-400\/25   { --tw-gradient-via: rgba(8,145,178,0.25) !important; }
+html[data-theme="light"] .via-cyan-400\/20   { --tw-gradient-via: rgba(8,145,178,0.20) !important; }
 html[data-theme="light"] .via-violet-400\/40 { --tw-gradient-via: rgba(109,40,217,0.4) !important; }
 html[data-theme="light"] .via-emerald-400\/40 { --tw-gradient-via: rgba(5,150,105,0.4) !important; }
+
+/* Subtle white-opacity dividers → dark-on-light for card accent lines */
+html[data-theme="light"] .via-white\/\[0\.04\] { --tw-gradient-via: rgba(0,0,0,0.10) !important; }
+html[data-theme="light"] .via-white\/\[0\.06\] { --tw-gradient-via: rgba(0,0,0,0.12) !important; }
+html[data-theme="light"] .via-white\/\[0\.08\] { --tw-gradient-via: rgba(0,0,0,0.14) !important; }
+html[data-theme="light"] .via-white\/\[0\.10\] { --tw-gradient-via: rgba(0,0,0,0.15) !important; }
+html[data-theme="light"] .via-white\/\[0\.12\] { --tw-gradient-via: rgba(0,0,0,0.18) !important; }
 
 /* ── Glow shadows — softer in light mode ──────────────────────────── */
 html[data-theme="light"] [class*="shadow-\[0_0_"] {
@@ -223,9 +281,9 @@ html[data-theme="light"] canvas {
 /* Dark overlay divs — transparent so canvas shows through */
 html[data-theme="light"] .three-bg-overlay { opacity: 0 !important; }
 
-/* Hero light mode: keep a professional light navy-white gradient */
+/* Hero light mode: professional slate-blue-white gradient */
 html[data-theme="light"] #hero {
-  background: linear-gradient(155deg, #e0f2fe 0%, #f0f9ff 35%, #ffffff 65%, #f0f9ff 100%) !important;
+  background: linear-gradient(145deg, #dbeafe 0%, #e0f2fe 28%, #f0f9ff 58%, #ecfdf5 100%) !important;
 }
 html[data-theme="light"] #hero .three-bg-overlay {
   background: linear-gradient(to bottom, rgba(224,242,254,0.45) 0%, rgba(255,255,255,0.12) 50%, rgba(240,249,255,0.35) 100%) !important;
@@ -241,25 +299,26 @@ html[data-theme="light"] #skills canvas {
 /* ── Shadows ───────────────────────────────────────────────────────── */
 html[data-theme="light"] .shadow-xl       { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04) !important; }
 html[data-theme="light"] .shadow-lg       { box-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04) !important; }
+html[data-theme="light"] .shadow-black\/40 { box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important; }
 html[data-theme="light"] .shadow-black\/30 { box-shadow: 0 4px 20px rgba(0,0,0,0.07) !important; }
 html[data-theme="light"] .shadow-black\/25 { box-shadow: 0 2px 16px rgba(0,0,0,0.06) !important; }
 html[data-theme="light"] .shadow-black\/20 { box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important; }
 html[data-theme="light"] .shadow-inner    { box-shadow: inset 0 1px 4px rgba(0,0,0,0.05) !important; }
 
 /* ── Card elevation in light mode ─────────────────────────────────── */
-html[data-theme="light"] .rounded-2xl {
+html[data-theme="light"] .rounded-2xl.border {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
 }
-html[data-theme="light"] .rounded-2xl:hover {
+html[data-theme="light"] .rounded-2xl.border:hover {
   box-shadow: 0 4px 20px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.04);
 }
-html[data-theme="light"] .rounded-xl {
+html[data-theme="light"] .rounded-xl.border {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04);
 }
 
 /* ── Header ───────────────────────────────────────────────────────── */
 html[data-theme="light"] header {
-  background-color: rgba(255,255,255,0.92) !important;
+  background-color: rgba(248,250,252,0.92) !important;
   border-bottom-color: rgba(0,0,0,0.08) !important;
   box-shadow: 0 1px 16px rgba(0,0,0,0.06) !important;
 }
@@ -281,19 +340,19 @@ html[data-theme="light"] .stat-gradient-text {
 
 /* ── Section-specific tinted backgrounds (visual interest) ─────────── */
 html[data-theme="light"] #about {
-  background: linear-gradient(165deg, #f0fdf4 0%, #ffffff 40%, #eff6ff 100%) !important;
+  background: linear-gradient(165deg, #ecfdf5 0%, #f8fafc 40%, #eff6ff 100%) !important;
 }
 html[data-theme="light"] #skills {
-  background: linear-gradient(145deg, #f0f9ff 0%, #f8fafc 50%, #faf5ff 100%) !important;
+  background: linear-gradient(145deg, #e0f2fe 0%, #f8fafc 50%, #faf5ff 100%) !important;
 }
 html[data-theme="light"] #projects {
-  background: linear-gradient(155deg, #ffffff 0%, #f0fdfa 100%) !important;
+  background: linear-gradient(155deg, #f8fafc 0%, #ecfdf5 100%) !important;
 }
 html[data-theme="light"] #experience {
-  background: linear-gradient(165deg, #f0fdf4 0%, #f8fafc 100%) !important;
+  background: linear-gradient(165deg, #ecfdf5 0%, #f1f5f9 100%) !important;
 }
 html[data-theme="light"] #contact {
-  background: linear-gradient(155deg, #eff6ff 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  background: linear-gradient(155deg, #eff6ff 0%, #f8fafc 50%, #ecfdf5 100%) !important;
 }
 
 /* ── Radial gradient blobs — more visible in light mode ────────────── */
@@ -318,10 +377,26 @@ html[data-theme="light"] .theme-toggle-track {
   background-color: rgba(251,191,36,0.12) !important;
 }
 
+/* ── Scrollbar in light mode ──────────────────────────────────────── */
+html[data-theme="light"] ::-webkit-scrollbar-track { background: #f1f5f9; }
+html[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(8,145,178,0.28); }
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(8,145,178,0.50); }
+
 /* ── Mobile hamburger menu overlay ────────────────────────────────── */
 html[data-theme="light"] .mobile-menu-overlay {
-  background-color: rgba(255,255,255,0.97) !important;
+  background-color: rgba(248,250,252,0.97) !important;
   border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+/* ── Mobile sticky hire CTA on light ─────────────────────────────── */
+html[data-theme="light"] .mobile-hire-cta-bar {
+  background-color: rgba(248,250,252,0.97) !important;
+  border-top-color: rgba(0,0,0,0.10) !important;
+}
+html[data-theme="light"] .mobile-hire-cta-bar a[href="#projects"] {
+  border-color: rgba(0,0,0,0.12) !important;
+  background-color: rgba(0,0,0,0.04) !important;
+  color: #3f3f46 !important;
 }
 
 /* ── Contact section dot-grid override (light mode) ──────────────── */
@@ -333,7 +408,40 @@ html[data-theme="light"] .contact-dot-grid {
 html[data-theme="light"] .border-y { border-color: rgba(0,0,0,0.07) !important; }
 
 /* ── Ping animation on light ─────────────────────────────────────── */
-html[data-theme="light"] .animate-ping { opacity: 0.4 !important; }
+html[data-theme="light"] .animate-ping { opacity: 0.35 !important; }
+
+/* ── Divider separator lines on light (h-px gradient lines) ──────── */
+html[data-theme="light"] .from-white\/\[0\.07\] { --tw-gradient-from: rgba(0,0,0,0.09) !important; }
+html[data-theme="light"] .from-white\/\[0\.06\] { --tw-gradient-from: rgba(0,0,0,0.08) !important; }
+html[data-theme="light"] .from-white\/\[0\.04\] { --tw-gradient-from: rgba(0,0,0,0.07) !important; }
+
+/* ── Live Terminal — always dark regardless of theme ─────────────── */
+/* The terminal uses dark inline backgrounds; text must stay light    */
+html[data-theme="light"] .terminal-window .text-zinc-50,
+html[data-theme="light"] .terminal-window .text-zinc-100,
+html[data-theme="light"] .terminal-window .text-zinc-200 { color: rgba(228,228,231,0.92) !important; }
+html[data-theme="light"] .terminal-window .text-zinc-300  { color: rgba(212,212,216,0.85) !important; }
+html[data-theme="light"] .terminal-window .text-zinc-400  { color: rgba(161,161,170,0.80) !important; }
+html[data-theme="light"] .terminal-window .text-zinc-500,
+html[data-theme="light"] .terminal-window .text-zinc-600  { color: rgba(113,113,122,0.75) !important; }
+/* Keep bubble backgrounds dark inside terminal */
+html[data-theme="light"] .terminal-window .bg-white\/\[0\.05\] { background-color: rgba(255,255,255,0.05) !important; }
+html[data-theme="light"] .terminal-window .bg-white\/\[0\.04\] { background-color: rgba(255,255,255,0.04) !important; }
+html[data-theme="light"] .terminal-window .bg-white\/\[0\.03\] { background-color: rgba(255,255,255,0.03) !important; }
+html[data-theme="light"] .terminal-window .bg-white\/\[0\.02\] { background-color: rgba(255,255,255,0.02) !important; }
+/* Input inside terminal stays dark */
+html[data-theme="light"] .terminal-window input {
+  color: rgba(228,228,231,0.92) !important;
+  background-color: rgba(255,255,255,0.03) !important;
+  border-color: rgba(255,255,255,0.05) !important;
+  box-shadow: none !important;
+}
+html[data-theme="light"] .terminal-window input::placeholder { color: rgba(113,113,122,0.65) !important; }
+html[data-theme="light"] .terminal-window input:focus {
+  background-color: rgba(255,255,255,0.06) !important;
+  border-color: rgba(167,139,250,0.30) !important;
+  box-shadow: none !important;
+}
 
 /* ── Form inputs in light mode ────────────────────────────────────── */
 html[data-theme="light"] input,
@@ -341,7 +449,21 @@ html[data-theme="light"] textarea,
 html[data-theme="light"] select {
   color: #18181b !important;
   background-color: rgba(255,255,255,0.95) !important;
-  border-color: rgba(0,0,0,0.12) !important;
+  border-color: rgba(0,0,0,0.14) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), inset 0 1px 2px rgba(0,0,0,0.03) !important;
+}
+html[data-theme="light"] input:focus,
+html[data-theme="light"] textarea:focus,
+html[data-theme="light"] select:focus {
+  background-color: #ffffff !important;
+  border-color: rgba(8,145,178,0.45) !important;
+  box-shadow: 0 0 0 3px rgba(8,145,178,0.10), 0 1px 3px rgba(0,0,0,0.05) !important;
+  outline: none !important;
+  color: #18181b !important;
+}
+/* Prevent Tailwind's focus:bg-zinc-950 from making inputs dark on focus in light mode */
+html[data-theme="light"] .focus\:bg-zinc-950:focus {
+  background-color: #ffffff !important;
 }
 html[data-theme="light"] input::placeholder,
 html[data-theme="light"] textarea::placeholder {
@@ -453,13 +575,49 @@ html[data-theme="light"] .ai-terminal-window {
   border-color: rgba(0,0,0,0.15) !important;
 }
 
+/* ── Contact form AI context panel — stays accented in light mode ──── */
+html[data-theme="light"] .border-violet-400\/20.bg-violet-400\/\[0\.04\] {
+  background-color: rgba(109,40,217,0.05) !important;
+}
+
+/* ── Violet focus ring override (AI context inputs) ─────────────────── */
+html[data-theme="light"] .focus\:border-violet-400\/40:focus {
+  border-color: rgba(109,40,217,0.40) !important;
+}
+html[data-theme="light"] .focus\:shadow-\[0_0_0_3px_rgba\(167\,139\,250\,0\.08\)\]:focus {
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.10) !important;
+}
+
+/* ── Placeholder overrides for explicit placeholder class ─────────── */
+html[data-theme="light"] .placeholder\:text-zinc-700::placeholder {
+  color: #a1a1aa !important;
+}
+
 /* ── Gradient dashed borders ─────────────────────────────────────── */
 html[data-theme="light"] [class*="border-dashed"] {
   border-color: rgba(0,0,0,0.12) !important;
 }
 
 /* ── Page root bg ─────────────────────────────────────────────────── */
-html[data-theme="light"] .min-h-full { background-color: #ffffff !important; }
+html[data-theme="light"] .min-h-full { background-color: #f8fafc !important; }
+
+/* ── Progress / skill bars on light ──────────────────────────────── */
+html[data-theme="light"] .bg-zinc-800 { background-color: #e2e8f0 !important; }
+
+/* ── Additional gradient from/to zinc-95x values ─────────────────── */
+html[data-theme="light"] [class*="from-zinc-95"] {
+  --tw-gradient-from: #f8fafc !important;
+}
+html[data-theme="light"] [class*="to-zinc-95"] {
+  --tw-gradient-to: #f8fafc !important;
+}
+
+/* ── Gradient background blobs opacity (light — more visible) ──────── */
+html[data-theme="light"] [class*="blur-\[120px\]"],
+html[data-theme="light"] [class*="blur-\[100px\]"],
+html[data-theme="light"] [class*="blur-\[90px\]"] {
+  opacity: 0.4;
+}
 
 /* ── Backdrop blur elements on light ──────────────────────────────── */
 html[data-theme="light"] .backdrop-blur-sm,

@@ -240,12 +240,12 @@ export function LiveTerminal() {
           </span>
         </div>
         <span className="h-px flex-1 bg-gradient-to-r from-violet-400/30 to-transparent" />
-        <span className="text-[10px] text-zinc-600">Ask anything · discuss ideas · explore projects</span>
+        <span className="hidden text-[10px] text-zinc-600 xs:block">Ask anything · discuss ideas · explore projects</span>
       </div>
 
       {/* Main window */}
       <motion.div
-        className="terminal-window flex h-[340px] flex-col overflow-hidden rounded-2xl border border-white/[0.09] backdrop-blur-md sm:h-[420px]"
+        className="terminal-window flex h-[300px] flex-col overflow-hidden rounded-2xl border border-white/[0.09] backdrop-blur-md xs:h-[340px] sm:h-[420px]"
         style={{
           background: "rgba(10,10,18,0.94)",
           boxShadow: "0 0 0 1px rgba(167,139,250,0.12), 0 24px 64px -20px rgba(0,0,0,0.65), 0 0 48px -14px rgba(167,139,250,0.18)",
@@ -272,7 +272,7 @@ export function LiveTerminal() {
               AI Chat
             </span>
           </div>
-          <span className="ml-auto font-mono text-[10px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+          <span className="ml-auto hidden font-mono text-[10px] sm:block" style={{ color: "rgba(255,255,255,0.25)" }}>
             backend · production · ai-enabled
           </span>
         </div>

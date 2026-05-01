@@ -76,7 +76,7 @@ export function SkillsSection() {
   return (
     <section
       id={SECTION_IDS.SKILLS}
-      className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-14 sm:py-20 lg:py-24"
     >
       <SkillsThreeBackground />
       <div className="three-bg-overlay pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-zinc-900/95 via-zinc-900/88 to-zinc-900/95" />
@@ -125,7 +125,7 @@ export function SkillsSection() {
                   <span className="h-px flex-1 bg-gradient-to-r from-white/[0.07] to-transparent" />
                   <span className="rounded-md border border-white/[0.07] bg-zinc-950/60 px-2 py-0.5 text-[10px] tabular-nums text-zinc-600">{group.items.length}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+                <div className="grid grid-cols-3 gap-2 xs:grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
                   {group.items.map((item, i) => (
                     <TechBadge key={item.id} label={item.label} percent={item.percent} index={groupIndex * 10 + i} />
                   ))}

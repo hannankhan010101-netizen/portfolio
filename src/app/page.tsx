@@ -3,6 +3,7 @@ import { AIFeaturesSection } from "@/components/portfolio/ai-features-section";
 import { ContactSection } from "@/components/portfolio/contact-section";
 import { ExperienceSection } from "@/components/portfolio/experience-section";
 import { HeroSection } from "@/components/portfolio/hero-section";
+import { MobileHireCta } from "@/components/portfolio/mobile-hire-cta";
 import { ProcessSection } from "@/components/portfolio/process-section";
 import { ProjectsSection } from "@/components/portfolio/projects-section";
 import { SiteHeader } from "@/components/portfolio/site-header";
@@ -26,6 +27,7 @@ export default function Home() {
         <ExperienceSection />
         <ContactSection />
       </main>
+      <MobileHireCta />
     </div>
   );
 }

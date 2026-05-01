@@ -1,0 +1,17 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS v4: defines design tokens and theme configuration."
+    },
+    {
+      "name": "@layer",
+      "description": "Tailwind CSS: declares a cascade layer."
+    },
+    {
+      "name": "@apply",
+      "description": "Tailwind CSS: inlines utility classes into a rule."
+    }
+  ]
+}

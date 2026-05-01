@@ -46,7 +46,7 @@ export function ProjectsSection() {
     <>
       <section
         id={SECTION_IDS.PROJECTS}
-        className="border-b border-white/10 bg-zinc-950 py-20 sm:py-24"
+        className="border-b border-white/10 bg-zinc-950 py-14 sm:py-20 lg:py-24"
       >
         <FadeIn>
         <div className="mx-auto max-w-6xl space-y-10 px-4 sm:px-6">

@@ -34,7 +34,7 @@ export function ExperienceSection() {
   return (
     <section
       id={SECTION_IDS.EXPERIENCE}
-      className="relative border-b border-white/10 bg-zinc-900 py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-14 sm:py-20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_40%_at_0%_100%,rgba(34,211,238,0.04),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_100%_10%,rgba(52,211,153,0.03),transparent_50%)]" />
@@ -115,10 +115,10 @@ export function ExperienceSection() {
                     {impacts.length > 0 && (
                       <div className="grid grid-cols-3 divide-x divide-white/[0.06] border-b border-white/[0.06]">
                         {impacts.map((imp) => (
-                          <div key={imp.label} className="flex flex-col items-center px-4 py-4 text-center">
-                            <p className="stat-gradient-text text-2xl font-bold tabular-nums">{imp.metric}</p>
-                            <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-zinc-400">{imp.label}</p>
-                            <p className="mt-0.5 text-[10px] leading-snug text-zinc-600">{imp.sub}</p>
+                          <div key={imp.label} className="flex flex-col items-center px-2 py-3 text-center sm:px-4 sm:py-4">
+                            <p className="stat-gradient-text text-lg font-bold tabular-nums sm:text-2xl">{imp.metric}</p>
+                            <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-zinc-400 sm:text-[10px]">{imp.label}</p>
+                            <p className="mt-0.5 hidden text-[10px] leading-snug text-zinc-600 sm:block">{imp.sub}</p>
                           </div>
                         ))}
                       </div>

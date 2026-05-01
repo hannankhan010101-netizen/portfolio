@@ -1,0 +1,7 @@
+{
+  "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "css.customData": [".vscode/tailwind.css-data.json"],
+  "scss.validate": false,
+  "less.validate": false
+}

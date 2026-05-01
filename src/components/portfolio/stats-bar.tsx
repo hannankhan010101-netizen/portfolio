@@ -134,7 +134,7 @@ function StatItem({ stat, index, isInView }: { stat: StatConfig; index: number; 
         {prefersReducedMotion ? stat.value : displayValue}
         {stat.suffix}
       </span>
-      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+      <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500 sm:tracking-[0.18em]">
         {stat.label}
       </span>
     </motion.div>
@@ -146,11 +146,11 @@ export function StatsBar() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <div ref={ref} className="relative overflow-hidden border-y border-white/[0.07] bg-zinc-950 py-12">
+    <div ref={ref} className="relative overflow-hidden border-y border-white/[0.07] bg-zinc-950 py-8 sm:py-12">
       <div className="pointer-events-none absolute inset-0 dot-grid opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_100%_at_50%_50%,rgba(34,211,238,0.055),transparent_65%)]" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-6 xs:gap-x-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-6">
           {IMPACT_STATS.map((stat, i) => (
             <StatItem key={stat.label} stat={stat} index={i} isInView={isInView} />
           ))}

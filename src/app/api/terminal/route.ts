@@ -139,6 +139,8 @@ export async function POST(request: Request) {
     const readable = new ReadableStream({
       async start(controller) {
         const reader = upstream.body!.getReader();
+        let closed = false;
+        const safeClose = () => { if (!closed) { closed = true; controller.close(); } };
         try {
           while (true) {
             const { done, value } = await reader.read();
@@ -150,7 +152,7 @@ export async function POST(request: Request) {
               const trimmed = line.trim();
               if (!trimmed.startsWith("data: ")) continue;
               const payload = trimmed.slice(6);
-              if (payload === "[DONE]") { controller.close(); return; }
+              if (payload === "[DONE]") { safeClose(); return; }
               try {
                 const json = JSON.parse(payload) as {
                   choices: { delta: { content?: string } }[];
@@ -163,7 +165,7 @@ export async function POST(request: Request) {
         } catch (e) {
           controller.error(e);
         } finally {
-          controller.close();
+          safeClose();
         }
       },
     });
