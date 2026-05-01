@@ -88,27 +88,30 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     name: "Broker-OS AI",
     badgeLabel: "ARCHITECTURE",
     summary:
-      "Insurance sector workflow orchestration platform — automating high-stakes pipelines from initial lead ingestion to final CRM conversion. Event-driven automation engine reduced the lead-to-conversion window by 55%, eliminating manual procedural overhead across the full insurance brokerage lifecycle.",
-    techStack: ["Node.js", "Fastify", "MySQL", "REST APIs"],
+      "Fully autonomous insurance CRM engineered to function as a zero-manual-touch broker. Orchestrates lead ingestion, AI-scheduled calls, OCR-driven document analysis, and RPA-based quote retrieval. Secures top three provider options with a Stripe-integrated checkout (5% broker fee), resulting in a 200% conversion boost and 55% faster processing.",
+    techStack: ["Node.js", "Fastify", "MySQL", "OCR", "RPA", "Stripe", "AI Scheduling", "Sentiment Analysis"],
     keyFeatures: [
-      "End-to-end lead ingestion to CRM conversion pipeline automation",
-      "Event-driven architecture reducing lead-to-conversion window by 55%",
-      "Workflow orchestration spanning document handling, compliance, and CRM sync",
-      "High-stakes data integrity controls across a multi-step insurance brokerage lifecycle",
+      "Zero-manual-touch end-to-end brokerage automation",
+      "Lead ingestion via iframe with AI-scheduled discovery calls",
+      "OCR-driven document analysis for automated data extraction",
+      "RPA web search & application engine for real-time provider quotes",
+      "Stripe-integrated checkout with automated 5% broker fee calculation",
+      "Centralized dashboard with integrated sentiment analysis & real-time tracking",
     ],
     architectureMarkdown: `## Broker-OS AI — system overview
 
-### Workflow Engine
-- **Event-driven orchestration** automating every stage from lead ingest through compliance to CRM conversion.
-- **55% reduction** in lead-to-conversion window through automated procedural workflows.
+### Automation Engine
+- **Zero-manual-touch orchestration** managing the entire journey from iframe lead ingestion to final checkout.
+- **RPA & OCR integration**: Autonomous document analysis and web-based quote retrieval from multiple providers.
+- **200% conversion boost**: Dramatically increased lead-to-customer rates while reducing the window by 55%.
 
-### API Layer
-- **Fastify** services with strict validation and audit logging at every state transition.
-- **Idempotent webhooks** ensuring no duplicate processing across retried events.
+### Workflow & AI
+- **AI-Scheduled Calls**: Integrated scheduling for automated qualification and discovery.
+- **Sentiment Analysis**: Real-time tracking of lead sentiment via a centralized dashboard.
 
-### Data
-- Relational schema modeling the full insurance brokerage lifecycle with immutable audit trails.
-- **MySQL** with transactional guarantees on all high-stakes state changes.`,
+### Data & Payments
+- **Stripe Integration**: Automated checkout flow including a 5% broker fee calculation.
+- **MySQL**: Relational schema modeling the full brokerage lifecycle with immutable audit trails.`,
     githubUrl: GITHUB_PROFILE_URL,
     liveDemoUrl: null,
     liveDemoLabel: "Live Demo",
@@ -189,7 +192,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
 ];
 
 export const PROJECTS_SECTION_INTRO =
-  "Production systems powering AI-driven B2B platforms — from 60-module marketplace backends and sub-200ms social automation engines to insurance workflow orchestrators that cut conversion windows by 55%.";
+  "Production systems powering AI-driven B2B platforms — from 60-module marketplace backends and sub-200ms social automation engines to insurance workflow orchestrators that boost conversion rates by 200% and cut conversion windows by 55%.";
 
 export const PROJECTS_PHILOSOPHY =
   "Every system I ship is built around three constants: reliability under concurrent load, maintainability at team scale, and security from day one. I treat backend architecture as a long-term strategic decision — modular, observable, and designed to grow without rewrites.";

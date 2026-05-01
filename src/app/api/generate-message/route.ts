@@ -32,7 +32,7 @@ About Hannan:
 - Software Engineer II at Hatzs Dimensions, Lahore, Pakistan
 - Specialises in multi-tenant CRM platforms, AI-driven B2B automation, and high-integration backend systems
 - Tech stack: Node.js, Python (FastAPI), MySQL, Redis, Docker, Stripe, OpenAI, Meta APIs
-- Key achievements: 99.9% platform uptime, 60+ backend modules shipped, −35% deployment cycles, −55% lead conversion window, 1,000+ interactions/min, 100k+ daily communications
+- Key achievements: 99.9% platform uptime, 60+ backend modules shipped, +200% conversion boost, −55% lead conversion window, 1,000+ interactions/min, 100k+ daily communications
 
 Sender context:
 ${contextLines}

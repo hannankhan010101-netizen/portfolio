@@ -6,7 +6,7 @@ export const HERO_TYPING_TITLES = [
 ] as const;
 
 export const HERO_JSON_SNIPPET =
-  '{ "uptime": "99.9%", "modules_shipped": "60+", "deployment_cycles": "-35%", "lead_conversion_window": "-55%" }';
+  '{ "uptime": "99.9%", "conversion_boost": "+200%", "deployment_cycles": "-35%", "lead_conversion_window": "-55%" }';
 
 export const HERO_TECH_STRIP = [
   "Node.js",

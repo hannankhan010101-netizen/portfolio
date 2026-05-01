@@ -64,7 +64,7 @@ export function generateContactMessage({ name, subject, role, intent, brief }: M
   const openings = isFounder
     ? [
         `${intro} came across your portfolio while looking for a backend engineer who can move fast without breaking things — your 35% reduction in deployment cycles and 99.9% uptime record immediately stood out.`,
-        `${intro} reviewed your portfolio and the way you've consistently delivered measurable outcomes — 55% faster lead conversion, 60+ production modules, AI-driven automation at scale — is exactly the execution speed I need.`,
+        `${intro} reviewed your portfolio and the way you've consistently delivered measurable outcomes — 200% lead conversion boost, 55% faster processing, 60+ production modules, AI-driven automation at scale — is exactly the execution speed I need.`,
       ]
     : isTechnical
     ? [
@@ -72,7 +72,7 @@ export function generateContactMessage({ name, subject, role, intent, brief }: M
         `${intro} reviewed your portfolio and your engineering approach stands out — particularly the workflow orchestration systems and the scale at which you've handled integrations across Stripe, OpenAI, and Meta APIs.`,
       ]
     : [
-        `${intro} came across your portfolio and was immediately struck by the outcomes you've delivered — 99.9% platform uptime, a 55% reduction in lead conversion windows, and 60+ backend modules shipped across AI-driven B2B platforms.`,
+        `${intro} came across your portfolio and was immediately struck by the outcomes you've delivered — 99.9% platform uptime, a 200% conversion boost (55% faster), and 60+ backend modules shipped across AI-driven B2B platforms.`,
         `${intro} reviewed your portfolio and your background in multi-tenant CRM platforms and high-integration backend systems is exactly what I've been looking for.`,
         `After going through your portfolio, the combination of technical depth and measurable business impact is rare — reducing deployment cycles by 35% while maintaining 99.9% uptime tells me you understand both engineering and delivery.`,
       ];

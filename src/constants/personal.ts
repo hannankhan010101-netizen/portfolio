@@ -25,7 +25,7 @@ export const HERO_INTRO_PARAGRAPH =
   "Architecting multi-tenant CRM platforms, automated B2B ecosystems, and high-integration backend infrastructures at production scale. Specialist in scalable API design and workflow engines — with 60+ service modules shipped, 99.9% uptime maintained, and deployment cycles accelerated by 35% through containerized CI/CD.";
 
 export const ABOUT_PROFESSIONAL_SUMMARY =
-  "Backend Software Engineer II specializing in architecting multi-tenant CRM platforms, automated B2B ecosystems, and high-integration backend systems. Expert in designing scalable APIs and workflow engines using Node.js, Python (FastAPI), and Supabase — with production integrations spanning Stripe, QuickBooks, TikTok API, Meta APIs, Google Business Profile, Twilio, and OpenAI.\n\nProven track record of translating complex enterprise requirements into production-grade systems through rapid development cycles and AI-assisted engineering workflows. Reduced deployment cycles by 35% via containerized CI/CD pipelines, engineered automation that cut lead-to-conversion windows by 55%, and architected backends sustaining 99.9% uptime for AI-driven B2B platforms processing high-volume real-time voice and data streams.\n\nPrimary on-call engineer for mission-critical systems and technical SME in client discovery sessions — bridging backend architecture with stakeholder requirements to deliver scalable, reliable infrastructure.";
+  "Backend Software Engineer II specializing in architecting multi-tenant CRM platforms, automated B2B ecosystems, and high-integration backend systems. Expert in designing scalable APIs and workflow engines using Node.js, Python (FastAPI), and Supabase — with production integrations spanning Stripe, QuickBooks, TikTok API, Meta APIs, Google Business Profile, Twilio, and OpenAI.\n\nProven track record of translating complex enterprise requirements into production-grade systems through rapid development cycles and AI-assisted engineering workflows. Reduced deployment cycles by 35% via containerized CI/CD pipelines, engineered automation that boosted lead-to-customer conversion rates by 200% while cutting conversion windows by 55%, and architected backends sustaining 99.9% uptime for AI-driven B2B platforms processing high-volume real-time voice and data streams.\n\nPrimary on-call engineer for mission-critical systems and technical SME in client discovery sessions — bridging backend architecture with stakeholder requirements to deliver scalable, reliable infrastructure.";
 
 export const EDUCATION: EducationEntry = {
   degree: "BS in Computer Science",
@@ -55,7 +55,7 @@ export const ABOUT_SPECIALIZATIONS: readonly AboutSpecialization[] = [
     id: "workflow-orchestration",
     title: "Workflow Orchestration",
     description:
-      "Designing event-driven automation engines for insurance, real estate, and marketing sectors — eliminating procedural overhead and accelerating business outcomes by up to 55%.",
+      "Designing event-driven automation engines for insurance, real estate, and marketing sectors — boosting conversion rates by 200% and accelerating business outcomes by 55%.",
   },
 ];
 

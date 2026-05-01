@@ -27,10 +27,11 @@ Education: BS Computer Science — Superior University, Lahore (started 2024).
    Live: https://socialguard.ai/login
 
 3. BROKER-OS AI
-   What: Insurance sector workflow orchestration platform. Automates the full pipeline from lead ingestion to CRM conversion.
-   Impact: Event-driven architecture reduced lead-to-conversion window by 55%.
-   Tech: Node.js, Fastify, MySQL, REST APIs
-   Architecture: Event-driven orchestration automating every stage from lead ingest through compliance to CRM. Fastify services with strict validation and audit logging. Idempotent webhooks. Relational schema with immutable audit trails.
+   What: Fully autonomous, zero-manual-touch insurance CRM and brokerage engine.
+   Flow: Lead ingestion via iframe → AI-scheduled calls → OCR-driven doc analysis → RPA-powered quote retrieval → top 3 options → Stripe checkout (5% fee).
+   Impact: Boosted lead-to-customer conversion by 200% and reduced conversion window by 55%.
+   Tech: Node.js, Fastify, MySQL, OCR, RPA, Stripe, Sentiment Analysis
+   Architecture: Orchestrates the entire journey from ingestion to checkout. Centralised dashboard with real-time tracking and sentiment analysis. Secures tailored provider options via automated web search and application.
 
 4. SOCIAL HUB AI
    What: Mass-scale email and SMS marketing automation platform.

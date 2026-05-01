@@ -4,16 +4,16 @@ import { useEffect, useRef } from "react";
 import type { HeroThreeSceneProps } from "@/types/hero-three.types";
 
 /* ── counts ──────────────────────────────────────────────────────── */
-const COUNT_DESKTOP = 88;
-const COUNT_MOBILE  = 44;
-const ANCHOR_COUNT  = 4;
+const COUNT_DESKTOP = 155;
+const COUNT_MOBILE  = 68;
+const ANCHOR_COUNT  = 6;
 
 /* ── physics ─────────────────────────────────────────────────────── */
 const CONNECT_DIST = 118;
-const MAX_SPEED    = 3.5;
-const DAMPING      = 0.920;
-const ORBIT_SPRING = 0.014;  // radial spring force toward orbital radius
-const ORBIT_TANG   = 0.13;   // tangential force (CCW orbital velocity)
+const MAX_SPEED    = 12.0;
+const DAMPING      = 0.940;
+const ORBIT_SPRING = 0.18;   // radial spring force toward orbital radius
+const ORBIT_TANG   = 1.2;    // tangential force (CCW orbital velocity)
 
 /* ── burst ───────────────────────────────────────────────────────── */
 const BURST_COOLDOWN = 90;   // frames (~1.5 s) — short so orbits resume fast
@@ -67,7 +67,7 @@ function mkP(W: number, Hc: number, idx: number, isAnchor: boolean): P {
     phase: Math.random() * Math.PI * 2,
     pingT: -1,
     /* anchors orbit closer; regular particles spread across a wide ring band */
-    orbitR: isAnchor ? 70 + Math.random() * 110 : 85 + Math.random() * 330,
+    orbitR: isAnchor ? 60 + Math.random() * 130 : 70 + Math.random() * 400,
   };
 }
 
@@ -246,10 +246,10 @@ export function HeroThreeScene({ className }: HeroThreeSceneProps) {
 
         /* soft walls */
         const mg = 28;
-        if (p.x < mg)      p.vx += (mg - p.x) * 0.08;
-        if (p.x > W - mg)  p.vx -= (p.x - W + mg) * 0.08;
-        if (p.y < mg)      p.vy += (mg - p.y) * 0.08;
-        if (p.y > Hc - mg) p.vy -= (p.y - Hc + mg) * 0.08;
+        if (p.x < mg)      p.vx += (mg - p.x) * 0.25;
+        if (p.x > W - mg)  p.vx -= (p.x - W + mg) * 0.25;
+        if (p.y < mg)      p.vy += (mg - p.y) * 0.25;
+        if (p.y > Hc - mg) p.vy -= (p.y - Hc + mg) * 0.25;
 
         p.x += p.vx;
         p.y += p.vy;

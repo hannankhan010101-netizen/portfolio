@@ -679,7 +679,7 @@ export function AIFeaturesSection() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden border-b border-white/[0.07] bg-zinc-950 py-14 sm:py-20 lg:py-24">
+    <section id="ai-features" className="relative overflow-hidden border-b border-white/[0.07] bg-zinc-950 py-14 sm:py-20 lg:py-24">
       {/* Background ambient glows */}
       <div aria-hidden className="pointer-events-none absolute -left-48 -top-24 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.07),transparent_65%)]" />
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_65%)]" />
